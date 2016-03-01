@@ -19,7 +19,7 @@
             <Image url="@lms.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="error"  layoutX="17.0" layoutY="316.0" prefHeight="17.0" prefWidth="339.0" styleClass="loginerror" stylesheets="@application.css" />
+      <Label fx:id="error" layoutX="17.0" layoutY="316.0" prefHeight="17.0" prefWidth="339.0" styleClass="loginerror" stylesheets="@application.css" />
       <Button layoutX="139.0" layoutY="342.0" mnemonicParsing="false" onAction="#validateUserlogin" prefHeight="25.0" prefWidth="88.0" text="Login" />
    </children>
 </AnchorPane>
