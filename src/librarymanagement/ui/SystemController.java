@@ -1,12 +1,12 @@
 package librarymanagement.ui;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class SystemController {
 	@FXML
@@ -24,8 +24,6 @@ public class SystemController {
 	@FXML
 	Label welcomeLbl = new Label();
 	
-	private Stage addMemberStage = new Stage();
-	
 	public SystemController(){
 		welcomeLbl.setText("Welcome");
 	}
@@ -39,9 +37,9 @@ public class SystemController {
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			this.addMemberStage.setScene(scene);
-			addMemberStage.show();
-			addMemberStage.setResizable(false);
+			Main.mainStage.setScene(scene);
+			Main.mainStage.show();
+			Main.mainStage.setResizable(false);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -66,8 +64,17 @@ public class SystemController {
 	}
 	
 	public void logout(){
-		//TODO
-		
+		try{
+			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Login.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Main.mainStage.setScene(scene);
+			Main.mainStage.show();
+			Main.mainStage.setResizable(false);
+			//Set LoginController.LoginUer to null
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
