@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="423.0" prefWidth="351.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label alignment="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="21.0" prefWidth="341.0" text="Add New Library Member">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="7.0" layoutY="52.0" text="Member ID" />
+      <Label layoutX="8.0" layoutY="92.0" text="First Name" />
+      <Label layoutX="9.0" layoutY="131.0" text="Last Name" />
+      <TextField layoutX="78.0" layoutY="48.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="88.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="127.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="167.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="207.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="247.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextField layoutX="78.0" layoutY="288.0" prefHeight="25.0" prefWidth="244.0" />
+      <Label layoutX="9.0" layoutY="171.0" text="Street" />
+      <Label layoutX="11.0" layoutY="211.0" text="City" />
+      <Label layoutX="11.0" layoutY="251.0" text="State" />
+      <Label layoutX="11.0" layoutY="292.0" text="Zip Code" />
+      <TextField layoutX="78.0" layoutY="332.0" prefHeight="25.0" prefWidth="244.0" />
+      <Label layoutX="11.0" layoutY="336.0" text="Phone #" />
+      <Button layoutX="119.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Save" />
+   </children>
+</AnchorPane>
