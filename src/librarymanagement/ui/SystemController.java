@@ -24,6 +24,8 @@ public class SystemController {
 	@FXML
 	Label welcomeLbl = new Label();
 	
+	Utility utility = new Utility();
+	
 	public SystemController(){
 		welcomeLbl.setText("Welcome");
 	}
@@ -33,7 +35,8 @@ public class SystemController {
 	}
 
 	public void addNewLibraryMember(){
-		try{
+		utility.openAddNewLibraryMember();
+		/*try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -42,7 +45,7 @@ public class SystemController {
 			Main.mainStage.setResizable(false);
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void editLibraryMemberInfo(){
@@ -64,7 +67,8 @@ public class SystemController {
 	}
 	
 	public void logout(){
-		try{
+		utility.OpenLogin();
+		/*try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Login.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -74,7 +78,7 @@ public class SystemController {
 			//Set LoginController.LoginUer to null
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 }

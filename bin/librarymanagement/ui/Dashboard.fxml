@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="188.0" prefWidth="179.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LibraryManagementSystem.DashboardController">
+<AnchorPane prefHeight="256.0" prefWidth="189.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagement.ui.SystemController">
    <children>
-      <Label layoutX="10.0" layoutY="1.0" text="Welcome John Doe!">
+      <Label fx:id="welcomeLbl" alignment="CENTER" layoutX="2.0" layoutY="1.0" prefHeight="27.0" prefWidth="183.0" text="Welcome">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -43,5 +43,6 @@
             </Button>
          </children>
       </FlowPane>
+      <Button fx:id="logout" layoutX="10.0" layoutY="217.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
    </children>
 </AnchorPane>
