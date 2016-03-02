@@ -4,6 +4,7 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.Book;
 import librarymanagement.dataaccess.BookService;
 
@@ -11,6 +12,8 @@ public class BookController {
 
 @FXML
 TableView<Book> tblBooks;
+@FXML
+AnchorPane anchPane = new AnchorPane();
 @FXML
 public void initialize(){
 	loadBooksData();

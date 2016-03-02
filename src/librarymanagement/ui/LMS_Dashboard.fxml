@@ -11,15 +11,15 @@
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="-1.0" prefHeight="522.0" prefWidth="832.0" styleClass="static-split" stylesheets="@application.css">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="244.0">
                <children>
+                  <Label fx:id="welcomeLbl" alignment="TOP_LEFT" layoutX="8.0" layoutY="8.0" prefHeight="68.0" prefWidth="236.0" text="Welcome Ashraf!" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Label>
                   <FlowPane fx:id="flowPane" alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="522.0" prefWidth="203.0">
                      <children>
-                        <Label fx:id="welcomeLbl" prefHeight="76.0" prefWidth="180.0" text="Welcome Ashraf!" wrapText="true">
-                           <font>
-                              <Font name="Arial Bold" size="15.0" />
-                           </font>
-                        </Label>
                         <Button fx:id="addNewMember" mnemonicParsing="false" onAction="#addNewLibraryMember" prefHeight="61.0" prefWidth="111.0" styleClass="button-addmember" stylesheets="@application.css" textAlignment="CENTER" wrapText="true">
                            <opaqueInsets>
                               <Insets />
@@ -72,7 +72,7 @@
                   </FlowPane>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="anchPane" minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="594.0" />
+          <AnchorPane fx:id="anchPane" minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="832.0" />
         </items>
       </SplitPane>
    </children>

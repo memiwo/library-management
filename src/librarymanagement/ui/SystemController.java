@@ -1,12 +1,7 @@
 package librarymanagement.ui;
 
-import java.io.IOException;
-
 import application.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -83,7 +78,8 @@ public class SystemController {
 	}
 	
 	public void checkInBook(){
-		utility.openCheckinBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "CheckOutBook.fxml");
 	}
 	
 	public void logout(){
