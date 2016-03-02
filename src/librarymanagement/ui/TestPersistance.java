@@ -1,5 +1,6 @@
 package librarymanagement.ui;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -7,15 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import librarymanagement.business.Book;
+import librarymanagement.business.Checkout;
+import librarymanagement.business.CheckoutRecord;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
 import librarymanagement.dataaccess.BookService;
+import librarymanagement.dataaccess.CheckoutRecordService;
 import librarymanagement.dataaccess.LibraryMemberService;
 import librarymanagement.dataaccess.UserService;
 
 public class TestPersistance {
 	public static void main(String[] args){
-	UserService userService = new UserService();
+	/*UserService userService = new UserService();
 		
 		User user = new User();
 		user.setFirstName("Issa");
@@ -62,6 +66,25 @@ public class TestPersistance {
 		List<String> asList = Arrays.asList("hello", "my", "dear", "world");
 		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
 		asList.stream().forEach(System.out::println);
+		*/
+		Book book = new Book();
+		book.setTitle("Design pattern");
+		book.setISBN(123456789);
+		
+		
+		
+		Checkout ch = new Checkout();
+		ch.setBook(book);
+		ch.setCheckoutDate(LocalDate.of(2016, 3, 02));
+		ch.setDueDate(LocalDate.of(2016, 03, 10));
+		
+		CheckoutRecordService recordService = new CheckoutRecordService();
+		recordService.save(ch);
+		
+		CheckoutRecord record = recordService.getCheckoutRecord();
+		List<Checkout> checkouts = record.getCheckouts();
+		//System.out.println(record.get);
+		checkouts.stream().forEach( c -> System.out.println(c.getBook().getTitle()));
 		
 		
 	}
