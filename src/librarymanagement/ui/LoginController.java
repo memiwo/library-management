@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import librarymanagement.business.User;
+//import librarymanagement.business.UserServices;
 import librarymanagement.dataaccess.UserService;
 
 public class LoginController {
@@ -21,8 +22,9 @@ private Utility utility = new Utility();
  public void validateUserlogin(){
 	 String txtuser = userName.getText();
 	 String txtpass = password.getText();
+	 
+	// UserServices usersrv = new UserServices();
 	 UserService usersrv = new UserService();
-	
 	 User datauser = usersrv.validate(txtuser, txtpass);
 	 if(datauser == null){
 		 error.setText("Invalid Username or Password");

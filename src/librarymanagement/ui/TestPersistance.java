@@ -2,12 +2,16 @@ package librarymanagement.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
+import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
 import librarymanagement.dataaccess.BookService;
+import librarymanagement.dataaccess.LibraryMemberService;
 import librarymanagement.dataaccess.UserService;
 
 public class TestPersistance {
@@ -52,6 +56,15 @@ public class TestPersistance {
 		for(Book b: bookService.findAll()){
 			System.out.println(b.getTitle());
 		}
+		
+		LibraryMember member = new LibraryMember();
+		member.setMemberNumber(1234);
+		LibraryMemberService libraryMemberService = new LibraryMemberService();
+		libraryMemberService.save(member);
+		
+		List<String> asList = Arrays.asList("hello", "my", "dear", "world");
+		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
+		asList.stream().forEach(System.out::println);
 		
 		
 	}

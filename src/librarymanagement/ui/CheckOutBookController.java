@@ -27,6 +27,8 @@ public class CheckOutBookController {
 	@FXML
 	Button btnCheckOut = new Button();
 	
+	Utility utility = new Utility();
+	
 	@FXML
 	public void initialize(){
 		/*lblTitle.setText(SearchBookController.searchedBook.getTitle());
@@ -43,34 +45,14 @@ public class CheckOutBookController {
 	public void checkout(){
 		//1. search for the library member id and get the library member object
 		//2. get the librarymember checkoutrecord
-		//3. create checout entry using the information of the book
+		//3. create checout esntry using the information of the book
 		//4. add the checkout entry into the list of checkouts in checkoutrecord of the library member
 		//go back to dashboard
-		try{
-			//set the scene to the dashboard and display
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Dashboard.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		utility.openDashboard();
 	}
 	
 	public void back(){
 		SearchBookController.searchedBook=null;
-		try{
-			//set the scene to the dashboard and display
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Dashboard.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		utility.openDashboard();
 	}
 }
