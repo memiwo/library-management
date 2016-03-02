@@ -1,9 +1,15 @@
 package librarymanagement.ui;
 
+import java.io.IOException;
+
 import application.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import librarymanagement.business.Authorization;
 
@@ -24,6 +30,8 @@ public class SystemController {
 	Label welcomeLbl = new Label();
 	@FXML
 	FlowPane flowPane = new FlowPane();
+	@FXML
+	public AnchorPane anchPane = new AnchorPane();
 	
 	Utility utility = new Utility();
 	
@@ -54,11 +62,29 @@ public class SystemController {
 	}
 	
 	public void addNewLibraryMember(){
-		utility.openAddNewLibraryMember();
+		//utility.openAddNewLibraryMember();
+		anchPane.getChildren().clear();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
+			AnchorPane a = (AnchorPane)root;
+			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			anchPane.getChildren().add(a);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void editLibraryMemberInfo(){
-		utility.openEditMemberSearch();
+		//utility.openEditMemberSearch();
+		anchPane.getChildren().clear();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/EditMemberSearch.fxml"));
+			AnchorPane a = (AnchorPane)root;
+			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			anchPane.getChildren().add(a);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void addBook(){

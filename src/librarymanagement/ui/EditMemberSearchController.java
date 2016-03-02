@@ -1,9 +1,14 @@
 package librarymanagement.ui;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.LibraryMemberService;
 
@@ -17,21 +22,25 @@ public class EditMemberSearchController {
 	Button btnSearch = new Button();
 	@FXML
 	Label error = new Label();
+	@FXML
+	AnchorPane anchPane = new AnchorPane();
 	
 	public static LibraryMember memberToEdit;
 	private LibraryMemberService libMemberService = new LibraryMemberService();
-	
-	Utility utility = new Utility();
-	
-	public void back(){
-		memberToEdit = null;
-		utility.openDashboard();
-	}
-	
+
 	public void search(){
 		validate();
 		if(error.getText().equals("")){
-			utility.openAddNewLibraryMember();	
+			//utility.openAddNewLibraryMember();
+			anchPane.getChildren().clear();
+			try {
+				Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
+				AnchorPane a = (AnchorPane)root;
+				a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				anchPane.getChildren().add(a);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

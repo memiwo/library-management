@@ -12,12 +12,13 @@ public class Utility {
 	private void openWindow(String windowName){
 		try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+windowName));
-			Scene scene = new Scene(root,800,600);
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Main.mainStage.setScene(scene);
 			Main.mainStage.centerOnScreen();
 			Main.mainStage.show();
 			Main.mainStage.setResizable(false);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -46,7 +47,7 @@ public class Utility {
 	}
 	
 	public void openDashboard(){
-		openWindow("Dashboard.fxml");
+		openWindow("LMS_Dashboard.fxml");
 	}
 	
 	public void openAddNewLibraryMember(){
