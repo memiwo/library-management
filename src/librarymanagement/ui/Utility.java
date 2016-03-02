@@ -1,9 +1,12 @@
 package librarymanagement.ui;
 
+import java.io.IOException;
+
 import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import librarymanagement.business.Book;
 
@@ -26,10 +29,10 @@ public class Utility {
         try {
         	
      
-           System.out.println("Loading scene");
+          // System.out.println("Loading scene");
            Scene scene = new Scene(loader.load());
 
-           System.out.println("Setting scene stage");
+           //System.out.println("Setting scene stage");
            stage.setScene(scene);
 
            stage.setResizable(false);
@@ -48,7 +51,7 @@ public class Utility {
 	private void openWindow(String windowName){
 		try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+windowName));
-			Scene scene = new Scene(root,800,600);
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Main.mainStage.setScene(scene);
 			Main.mainStage.centerOnScreen();
@@ -86,7 +89,7 @@ public class Utility {
 	}
 	
 	public void openDashboard(){
-		openWindow("Dashboard.fxml");
+		openWindow("LMS_Dashboard.fxml");
 	}
 	
 	public void openAddNewLibraryMember(){
@@ -133,9 +136,32 @@ public class Utility {
 
 	public void lunchAddBook() {
 		// TODO Auto-generated method stub
-		FXMLLoader	loader =	getLoader("AddNewBook.fxml");
+		FXMLLoader	loader = getLoader("AddNewBook.fxml");
 		launchForm(loader);
 	}
 	
+	public void lunchAddBookCopy(Book book) {
+		// TODO Auto-generated method stub
+		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
+		launchForm(loader);
+		AddBookCopyController ac = loader.getController();
+		ac.initData(book);
+		
+	}
 	
+	public void lunchAddBookAutor(Book book) {
+		// TODO Auto-generated method stub
+		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
+		launchForm(loader);
+	}
+	public void displayScreenInDashBoard(AnchorPane anchPane, String screenName){
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+screenName));
+			AnchorPane a = (AnchorPane)root;
+			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			anchPane.getChildren().add(a);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

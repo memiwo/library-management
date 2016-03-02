@@ -1,11 +1,15 @@
 package librarymanagement.ui;
 
+import java.io.IOException;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.Address;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.LibraryMemberService;
@@ -36,8 +40,8 @@ public class AddMemberController {
 	Label title = new Label();
 	@FXML
 	Label error = new Label();
-	
-	Utility utility = new Utility();
+	@FXML
+	AnchorPane anchPane = new AnchorPane();
 	
 	LibraryMemberService libMemberService = new LibraryMemberService();
 
@@ -57,6 +61,7 @@ public class AddMemberController {
 			title.setText("Edit Library Member");
 		}else{
 			title.setText("Add Library Member");
+			btnBack.setVisible(false);
 		}
 	}
 	
@@ -130,12 +135,21 @@ public class AddMemberController {
 			}
 			//save the Member by accessing LibraryMemberSerivce
 			libMemberService.save(libMembers);
-			utility.openDashboard();
+			error.setText("Successfully saved library member.");
 		}
 	}
 	
 	public void back(){
 		EditMemberSearchController.memberToEdit = null;
-		utility.openDashboard();
+		//utility.openDashboard();
+		anchPane.getChildren().clear();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/EditMemberSearch.fxml"));
+			AnchorPane a = (AnchorPane)root;
+			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			anchPane.getChildren().add(a);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
