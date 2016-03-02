@@ -3,9 +3,12 @@ package librarymanagement.ui;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import librarymanagement.business.Author;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.dataaccess.BookService;
 import javafx.scene.layout.AnchorPane;
 
@@ -14,7 +17,19 @@ Utility utility = new Utility();
 @FXML
 TableView<Book> tblBooks;
 @FXML
-//label 
+TableView<BookCopy> tblBookCopies;
+@FXML
+TableView<Author> tblAuthor;
+
+
+@FXML
+Label lbltitle;
+@FXML
+Label lblISBN;
+@FXML
+Label lblNumberOfCopy;
+@FXML
+AnchorPane ap1;
 
 Book rowData;
 
