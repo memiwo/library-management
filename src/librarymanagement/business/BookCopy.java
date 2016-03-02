@@ -10,6 +10,14 @@ public class BookCopy implements Serializable{
 	private Integer copyNumber;
 	private boolean isAvailable;
 
+	public BookCopy() {
+	}
+	public BookCopy(Integer copyNumber, boolean isAvailable) {
+		super();
+		this.copyNumber = copyNumber;
+		this.isAvailable = isAvailable;
+	}
+
 	public boolean isAvailable() {
 		return isAvailable;
 	}

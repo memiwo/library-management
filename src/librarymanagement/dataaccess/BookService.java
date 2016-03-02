@@ -3,6 +3,7 @@ package librarymanagement.dataaccess;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import librarymanagement.business.Book;
 
@@ -30,6 +31,17 @@ public class BookService implements Dao<Book> {
 		}*/
 		persistanceManager.saveEntity(object);
 		
+	}
+	
+	public Book isAvailableForCheckout(int isbn){
+		
+		List<Book> books = findAll();
+		for(Book book : books){
+			if(book.getISBN() == isbn)
+				return book;
+		}
+
+		return null;
 	}
 
 

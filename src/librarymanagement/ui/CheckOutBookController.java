@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import librarymanagement.business.Author;
+import librarymanagement.business.Book;
 
 public class CheckOutBookController {
 	
@@ -31,15 +32,17 @@ public class CheckOutBookController {
 	
 	@FXML
 	public void initialize(){
-		/*lblTitle.setText(SearchBookController.searchedBook.getTitle());
-		lblISBN.setText(SearchBookController.searchedBook.getISBN().toString());
+		Book book = SearchBookController.searchedBook;	
+		
+		lblTitle.setText(book.getTitle());
+		lblISBN.setText(book.getISBN().toString());
 		String authors = "";
-		for(Author a : SearchBookController.searchedBook.getAuthors()){
+		for(Author a : book.getAuthors()){
 			authors+=a.getFirstName()+" "+a.getLastName();
 		}
 		lblAuthors.setText(authors);
-		lblAllowableDaysToBorrow.setText(SearchBookController.searchedBook.getAllowableDaysToBorrow().toString());
-		*/
+		//lblAllowableDaysToBorrow.setText(book.getAllowableDaysToBorrow().toString());*/
+		
 	}
 	
 	public void checkout(){

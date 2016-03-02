@@ -1,29 +1,42 @@
 package librarymanagement.ui;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
-import librarymanagement.business.Checkout;
-import librarymanagement.business.CheckoutRecord;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
 import librarymanagement.dataaccess.BookService;
-import librarymanagement.dataaccess.CheckoutRecordService;
 import librarymanagement.dataaccess.LibraryMemberService;
 import librarymanagement.dataaccess.UserService;
 
 public class TestPersistance {
 	public static void main(String[] args){
-	/*UserService userService = new UserService();
+		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE), new BookCopy(2,Boolean.FALSE), new BookCopy(3, Boolean.TRUE));
+		Book b1 = new Book();
+		b1.setTitle("Domain Driven Design");
+		b1.setISBN(123456);
+		b1.setBookCopy(copies);
+		Book b2 = new Book();
+		b2.setISBN(98765);
+		b2.setTitle("Core Java");
+		
+		BookService bookService = new BookService();
+		bookService.save(Arrays.asList(b1,b2));
+		
+		for(Book b: bookService.findAll()){
+			System.out.println(b.getTitle());
+		}
+	UserService userService = new UserService();
 		
 		User user = new User();
 		user.setFirstName("Issa");
+		user.getRoles().add(Authorization.LIBRARIAN);
+		user.setUserName("issa");
+		user.setPassword("password");
 		
 		User user2 = new User();
 		user2.setFirstName("Ashraf");
@@ -49,45 +62,15 @@ public class TestPersistance {
 			System.out.println(u.getFirstName());
 		}
 		
-		Book b1 = new Book();
-		b1.setTitle("Domain Driven Design");
-		Book b2 = new Book();
-		b2.setTitle("Core Java");
 		
-		BookService bookService = new BookService();
-		bookService.save(Arrays.asList(b1,b2));
-		
-		for(Book b: bookService.findAll()){
-			System.out.println(b.getTitle());
-		}
 		
 		LibraryMember member = new LibraryMember();
 		member.setMemberNumber(1234);
 		LibraryMemberService libraryMemberService = new LibraryMemberService();
 		libraryMemberService.save(member);
 		
-		List<String> asList = Arrays.asList("hello", "my", "dear", "world");
-		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
-		asList.stream().forEach(System.out::println);
-		*/
-		Book book = new Book();
-		book.setTitle("Design pattern");
-		book.setISBN(123456789);
 		
 		
-		
-		Checkout ch = new Checkout();
-		ch.setBook(book);
-		ch.setCheckoutDate(LocalDate.of(2016, 3, 02));
-		ch.setDueDate(LocalDate.of(2016, 03, 10));
-		
-		CheckoutRecordService recordService = new CheckoutRecordService();
-		recordService.save(ch);
-		
-		CheckoutRecord record = recordService.getCheckoutRecord();
-		List<Checkout> checkouts = record.getCheckouts();
-		//System.out.println(record.get);
-		checkouts.stream().forEach( c -> System.out.println(c.getBook().getTitle()));
 		
 		
 	}

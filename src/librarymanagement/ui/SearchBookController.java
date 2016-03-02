@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.BookService;
 import librarymanagement.dataaccess.LibraryMemberService;
@@ -33,6 +34,7 @@ public class SearchBookController {
 	Utility utility = new Utility();
 	
 	private LibraryMemberService memberService = new LibraryMemberService();
+	
 	private BookService bookService = new BookService();
 	
 	public void search(){
@@ -43,6 +45,14 @@ public class SearchBookController {
 			message.setText("member is not found");
 			return;
 		}else{
+			Book book = bookService.isAvailableForCheckout(Integer.valueOf(tfISBN.getText()));
+			
+			if(book == null){
+				message.setText("Book is not availabler");
+				return;
+			}
+			SearchBookController.searchedBook = book;
+			
 			utility.openCheckinBook();
 			//Perform book search by ISBN number
 			//if book is found, show the Book information Window
