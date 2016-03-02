@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
 import librarymanagement.business.User;
 import librarymanagement.dataaccess.BookService;
@@ -18,7 +19,9 @@ public class TestPersistance {
 		
 		User user2 = new User();
 		user2.setFirstName("Ashraf");
-		
+		user2.getRoles().add(Authorization.ADMINISTRATOR);
+		user2.setUserName("admin");
+		user2.setPassword("admin");
 		User user3 = new User();
 		user3.setFirstName("Pat");
 		

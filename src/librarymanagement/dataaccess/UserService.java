@@ -47,6 +47,21 @@ public class UserService  implements Dao<User> {
 	public List<User> findAll() {
 		return persistanceManager.getEntityList();
 	}
+	public User validate(String username,String password){
+		// 1 - first get all users from storage and loop
+		for(User usr: findAll()){
+			
+			if(usr != null && username.equals(usr.getUserName())&& password.equals(usr.getPassword())){
+				// 2 - this user is valid what about his roles;
+				//TODO get user list of roles
+				
+				return usr;
+			}
+		}
+		
+		return null;
+		
+	}
 	
 	
 	
