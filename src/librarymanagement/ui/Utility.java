@@ -26,10 +26,10 @@ public class Utility {
         try {
         	
      
-           System.out.println("Loading scene");
+          // System.out.println("Loading scene");
            Scene scene = new Scene(loader.load());
 
-           System.out.println("Setting scene stage");
+           //System.out.println("Setting scene stage");
            stage.setScene(scene);
 
            stage.setResizable(false);
@@ -129,9 +129,23 @@ public class Utility {
 
 	public void lunchAddBook() {
 		// TODO Auto-generated method stub
-		FXMLLoader	loader =	getLoader("AddNewBook.fxml");
+		FXMLLoader	loader = getLoader("AddNewBook.fxml");
 		launchForm(loader);
 	}
 	
+	public void lunchAddBookCopy(Book book) {
+		// TODO Auto-generated method stub
+		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
+		launchForm(loader);
+		AddBookCopyController ac = loader.getController();
+		ac.initData(book);
+		
+	}
+	
+	public void lunchAddBookAutor(Book book) {
+		// TODO Auto-generated method stub
+		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
+		launchForm(loader);
+	}
 	
 }
