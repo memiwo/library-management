@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="126.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="126.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagement.ui.EditMemberSearchController">
    <children>
       <Label alignment="CENTER" layoutY="6.0" prefHeight="21.0" prefWidth="342.0" text="Edit Member Info">
          <font>
@@ -14,8 +14,9 @@
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="33.0" text="Member ID #" />
-      <TextField layoutX="102.0" layoutY="29.0" prefHeight="25.0" prefWidth="195.0" />
-      <Button layoutX="102.0" layoutY="87.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Search" />
+      <TextField fx:id="tfMemberID" layoutX="102.0" layoutY="29.0" prefHeight="25.0" prefWidth="195.0" />
+      <Button fx:id="btnSearch" layoutX="171.0" layoutY="87.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="125.0" text="Search" />
       <Label layoutX="14.0" layoutY="63.0" prefHeight="17.0" prefWidth="325.0" text="&lt;error label&gt;" />
+      <Button fx:id="btnBack" layoutX="40.0" layoutY="87.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="111.0" text="Back" />
    </children>
 </AnchorPane>

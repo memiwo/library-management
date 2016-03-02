@@ -37,10 +37,6 @@ public class Utility {
 		openWindow("SearchBook.fxml");
 	}
 	
-	public void openAddMember(){
-		openWindow("AddNewLibraryMember.fxml");
-	}
-	
 	public void openCheckinBook(){
 		//create the checkinbook.fxml
 	}
