@@ -4,10 +4,46 @@ import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import librarymanagement.business.Book;
 
 public class Utility {
 
+	private FXMLLoader getLoader(String windowName){
+		FXMLLoader loader = new FXMLLoader(
+			    getClass().getResource(
+			    		"/librarymanagement/ui/"+windowName
+			    )
+			);
+		
+		return loader;
+	}
+	
+	private void launchForm(FXMLLoader loader) {
+        
+        Stage stage = new Stage();
+       
+        try {
+        	
+     
+           System.out.println("Loading scene");
+           Scene scene = new Scene(loader.load());
+
+           System.out.println("Setting scene stage");
+           stage.setScene(scene);
+
+           stage.setResizable(false);
+           //stage.setAlwaysOnTop(true);
+
+           
+           stage.show();
+           
+       } catch(Exception e) {
+           System.out.println(e.toString());
+           e.printStackTrace();
+	}      
+       
+   }
 	
 	private void openWindow(String windowName){
 		try{
@@ -66,9 +102,9 @@ public class Utility {
 		//create the checkinbook.fxml
 	}
 	
-	public void openAddBook(){
+	public void openBooks(){
 		//create addBook window
-		openWindow("AddBook.fxml");
+		openWindow("MangeBooks.fxml");
 	}
 	
 	public void openAddBookCopy(int uniqu,Book book){
@@ -83,5 +119,19 @@ public class Utility {
 	public void openEditMemberSearch(){
 		openWindow("EditMemberSearch.fxml");
 	}
+	
+	public void lunchAddBookCopy(int uniqu,Book book){
+		FXMLLoader	loader =	getLoader("AddBookCopy.fxml");
+		AddBookCopyController ac = loader.<AddBookCopyController>getController();
+		ac.initData(uniqu, book);
+		launchForm(loader);
+	}
+
+	public void lunchAddBook() {
+		// TODO Auto-generated method stub
+		FXMLLoader	loader =	getLoader("AddNewBook.fxml");
+		launchForm(loader);
+	}
+	
 	
 }
