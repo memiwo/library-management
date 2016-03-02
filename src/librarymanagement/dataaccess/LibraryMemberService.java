@@ -1,8 +1,12 @@
 package librarymanagement.dataaccess;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import librarymanagement.business.LibraryMember;
+import librarymanagement.business.User;
 
 public class LibraryMemberService implements Dao<LibraryMember>{
 
@@ -10,7 +14,7 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	
 	SerializationPersistanceManager<LibraryMember> persistanceManager = new SerializationPersistanceManager<LibraryMember>(LIBRARYMEMBER_FILE);
 	
-	private List<LibraryMember> libraryMembers;
+	List<LibraryMember> libraryMembers;
 	
 	public LibraryMemberService() {
 		libraryMembers = persistanceManager.getEntityList();
@@ -18,37 +22,37 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	
 	@Override
 	public void save(LibraryMember object) {
-		persistanceManager.saveEntity(libraryMembers);	
+		libraryMembers.add(object);
+		saveAll(libraryMembers);
+	}
+	
+	private void saveAll(List<LibraryMember> list){
+		persistanceManager.saveEntity(list);
 	}
 
 	@Override
 	public void save(List<LibraryMember> object) {
-		persistanceManager.saveEntity(libraryMembers);
+		this.libraryMembers.addAll(object);
+		saveAll(libraryMembers);
 		
 	}
+
 	@Override
 	public LibraryMember get(int id) {
-		LibraryMember member = null;
-		for(LibraryMember libMem : libraryMembers){
-			if(id == libMem.getMemberNumber()){
-				member = libMem;
-			}
-		}
-		return member;
+		
+		return libraryMembers.stream().filter(m -> m.getMemberNumber() == id).findFirst().orElse(null);
 	}
 
 	@Override
 	public void delete(int id) {
-		for(LibraryMember libMem : libraryMembers){
-			if(id == libMem.getMemberNumber()){
-				libraryMembers.remove(libMem);
-			}
-		}
+		libraryMembers = libraryMembers.stream().filter(m -> m.getMemberNumber() != id).collect(Collectors.toList());
+		
 	}
 
 	@Override
 	public List<LibraryMember> findAll() {
 		return libraryMembers;
 	}
+	
 
 }
