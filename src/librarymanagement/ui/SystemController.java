@@ -1,9 +1,11 @@
 package librarymanagement.ui;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import librarymanagement.business.Authorization;
 
 public class SystemController {
 	@FXML
@@ -27,15 +29,24 @@ public class SystemController {
 	
 	@FXML
 	public void initialize(){
-		welcomeLbl.setText("Welcome");
+		welcomeLbl.setText("Welcome "+Main.currentUser.getFirstName()+" "+Main.currentUser.getLastName());
+		
+		
 		//if administrator
-		//flowPane.getChildren().remove(checkOutBook);
-		//flowPane.getChildren().remove(checkInBook);
+		if(Main.currentUser.getRoles().size()==1 && Main.currentUser.getRoles().contains(Authorization.ADMINISTRATOR)){
+			flowPane.getChildren().remove(checkOutBook);
+			flowPane.getChildren().remove(checkInBook);
+		}
 		
 		//if librarian
-		//flowPane.getChildren().remove(addNewMember);
-		//flowPane.getChildren().remove(editMember);
-		//flowPane.getChildren().remove(addBook);
+		if(Main.currentUser.getRoles().size()==1 && Main.currentUser.getRoles().contains(Authorization.LIBRARIAN)){
+			flowPane.getChildren().remove(addNewMember);
+			flowPane.getChildren().remove(editMember);
+			flowPane.getChildren().remove(addBook);
+		}
+		
+		//if both
+		//by default all the functionalities are available
 	}
 
 	public SystemController(){
@@ -64,7 +75,6 @@ public class SystemController {
 	}
 	
 	public void logout(){
-
 		utility.openLogin();
 	}
 	

@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
 import librarymanagement.business.Checkout;
 import librarymanagement.business.CheckoutRecord;
@@ -26,7 +27,9 @@ public class TestPersistance {
 		
 		User user2 = new User();
 		user2.setFirstName("Ashraf");
-		
+		user2.getRoles().add(Authorization.ADMINISTRATOR);
+		user2.setUserName("admin");
+		user2.setPassword("admin");
 		User user3 = new User();
 		user3.setFirstName("Pat");
 		

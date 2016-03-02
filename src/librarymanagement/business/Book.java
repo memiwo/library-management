@@ -12,7 +12,8 @@ public class Book implements Serializable{
 	private List<Author> authors = new ArrayList<Author>();
 	private boolean isAvailable;
 	private Integer allowableDaysToBorrow;
-	private BookCopy bookCopy;
+	// TODO is this should be a list of bookCopy?
+	private List<BookCopy> bookCopy = new ArrayList<>();
 	
 	
 	
@@ -46,10 +47,10 @@ public class Book implements Serializable{
 	public void setAllowableDaysToBorrow(Integer allowableDaysToBorrow) {
 		this.allowableDaysToBorrow = allowableDaysToBorrow;
 	}
-	public BookCopy getBookCopy() {
+	public List<BookCopy> getBookCopy() {
 		return bookCopy;
 	}
-	public void setBookCopy(BookCopy bookCopy) {
+	public void setBookCopy(List<BookCopy> bookCopy) {
 		this.bookCopy = bookCopy;
 	}
 	
