@@ -1,6 +1,8 @@
 build/
 out/
 classes
+bin/
+storage
 bin/**
 *.class
 *.jar
