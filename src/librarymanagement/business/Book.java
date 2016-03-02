@@ -15,7 +15,14 @@ public class Book implements Serializable{
 	// TODO is this should be a list of bookCopy?
 	private List<BookCopy> bookCopy = new ArrayList<>();
 	
-	
+	public  Book(){
+		
+	}
+	public  Book(String title,int isbn,int allowableDaysToBorrow){
+		this.title= title;
+		this.ISBN = isbn;
+		this.allowableDaysToBorrow = allowableDaysToBorrow;
+	}
 	
 	public String getTitle() {
 		return title;

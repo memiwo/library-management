@@ -3,20 +3,25 @@ package librarymanagement.ui;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.Book;
 import librarymanagement.dataaccess.BookService;
+import javafx.scene.layout.AnchorPane;
 
 public class BookController {
-
+Utility utility = new Utility();
 @FXML
 TableView<Book> tblBooks;
 @FXML
-AnchorPane anchPane = new AnchorPane();
+//label 
+
+Book rowData;
+
 @FXML
 public void initialize(){
 	loadBooksData();
+	getSelecteditem();
 }
 
 public void loadBooksData(){
@@ -29,9 +34,37 @@ public void loadBooksData(){
 		tblBooks.getItems().add(book);
 	}
 }
+private void getSelecteditem(){
+	tblBooks.setRowFactory( tv -> {
+	    TableRow<Book> row = new TableRow<>();
+	    row.setOnMouseClicked(event -> {
+	        if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+	             rowData = row.getItem();
+	             showBookData(rowData);
+	            System.out.println(rowData);
+	        }
+	    });
+	    return row ;
+	});
+}
 
-public void openAddBook(){
+void showBookData(Book book){
 	
+}
+
+@FXML
+public void openAddBookCopy(){
+	
+	utility.lunchAddBookCopy(rowData);
+}
+@FXML
+public void openAddBookAuthor(){
+	if(rowData != null)
+	utility.lunchAddBookAutor(rowData);
+}
+@FXML
+public void openAddBook(){
+	utility.lunchAddBook();
 }
 
 }
