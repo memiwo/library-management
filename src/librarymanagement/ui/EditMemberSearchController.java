@@ -45,7 +45,7 @@ public class EditMemberSearchController {
 				errorMsg.append("Member does not exist.").append("\n");
 			}
 		}catch(NumberFormatException ex){
-			errorMsg.append("Invalid ID number format.").append("\n");
+			errorMsg.append("Input a valid ID number.").append("\n");
 		}
 		error.setText(errorMsg.toString());
 	}

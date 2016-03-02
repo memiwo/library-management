@@ -62,13 +62,18 @@ public class AddMemberController {
 	
 	public void validate(){
 		StringBuilder errorMsg = new StringBuilder();
+		//All fields should not be empty
+		if(tfFirstName.getText().equals("")||tfLastName.getText().equals("")||
+				tfStreet.getText().equals("")||tfCity.getText().equals("")||tfState.getText().equals("")){
+			errorMsg.append("Fields should not be empty.").append("\n");
+		}
 		//Check if ID number already exists
 		List<LibraryMember> libMembers;
 		if(EditMemberSearchController.memberToEdit==null){
 			 libMembers = libMemberService.findAll();
 			 for(LibraryMember l :  libMembers){
 				 if(l.getMemberNumber().toString().equals(tfMemberID.getText())){
-						errorMsg.append("ID number already exists.").append("\n");
+						errorMsg.append("ID number already exist.").append("\n");
 						break;
 					}
 			 }
