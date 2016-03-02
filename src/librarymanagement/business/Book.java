@@ -12,6 +12,7 @@ public class Book implements Serializable{
 	private List<Author> authors = new ArrayList<Author>();
 	private boolean isAvailable;
 	private Integer allowableDaysToBorrow;
+	// TODO is this should be a list of bookCopy?
 	private BookCopy bookCopy;
 	
 	
