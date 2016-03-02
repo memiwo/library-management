@@ -5,3 +5,45 @@
 	 -fx-text-alignment	:center;
 	 -fx-content-display:center ;
 }
+
+.button{
+	-fx-background-radius: 400;
+}
+
+.button-addmember{
+	-fx-background-image: url(addmember.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}
+
+.button-editmember{
+	-fx-background-image: url(editmember.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}
+.button-addbookcopy{
+	-fx-background-image: url(book_add_copy.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}
+.button-checkout{
+	-fx-background-image: url(bookcheckout.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}
+.button-checkin{
+	-fx-background-image: url(bookcheckin.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}
+.button-logout{
+	-fx-background-image: url(logout.png);
+	-fx-background-size: 60px, 61px;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat 
+}

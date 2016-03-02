@@ -17,8 +17,6 @@ public class EditMemberSearchController {
 	@FXML
 	TextField tfMemberID = new TextField();
 	@FXML
-	Button btnBack = new Button();
-	@FXML
 	Button btnSearch = new Button();
 	@FXML
 	Label error = new Label();

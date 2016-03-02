@@ -62,41 +62,27 @@ public class SystemController {
 	}
 	
 	public void addNewLibraryMember(){
-		//utility.openAddNewLibraryMember();
 		anchPane.getChildren().clear();
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
-			AnchorPane a = (AnchorPane)root;
-			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			anchPane.getChildren().add(a);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		utility.displayScreenInDashBoard(anchPane, "AddNewLibraryMember.fxml");
 	}
 	
 	public void editLibraryMemberInfo(){
-		//utility.openEditMemberSearch();
 		anchPane.getChildren().clear();
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/EditMemberSearch.fxml"));
-			AnchorPane a = (AnchorPane)root;
-			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			anchPane.getChildren().add(a);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		utility.displayScreenInDashBoard(anchPane, "EditMemberSearch.fxml");
 	}
 	
 	public void addBook(){
-		utility.openAddBook();
+		//utility.lunchAddBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "AddBook.fxml");
 	}
 	
 	public void checkOutBook(){
-		utility.openSearchBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "SearchBook.fxml");
 	}
 	
 	public void checkInBook(){
-
 		utility.openCheckinBook();
 	}
 	
