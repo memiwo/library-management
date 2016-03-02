@@ -23,4 +23,8 @@ public class CheckoutRecord implements Serializable{
 		this.recordOfFines = recordOfFines;
 	}
 	
+	public void addCheckoutRecord(Checkout checkout){
+		checkouts.add(checkout);
+	}
+	
 }

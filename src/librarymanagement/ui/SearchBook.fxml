@@ -15,10 +15,10 @@
       </Label>
       <TextField fx:id="tfISBN" layoutX="83.0" layoutY="62.0" prefHeight="25.0" prefWidth="227.0" />
       <Label layoutX="32.0" layoutY="66.0" text="ISBN #" />
-      <Button fx:id="btnSearch" layoutX="191.0" layoutY="137.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="98.0" text="Search" />
-      <Button fx:id="btnBack" layoutX="87.0" layoutY="137.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="87.0" text="Back" />
       <Label layoutX="10.0" layoutY="102.0" text="Member Id" />
       <TextField fx:id="tfMemberId" layoutX="84.0" layoutY="97.0" prefHeight="26.0" prefWidth="227.0" />
+      <Button fx:id="btnSearch" layoutX="191.0" layoutY="137.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="98.0" text="Search" />
+      <Button fx:id="btnBack" layoutX="87.0" layoutY="137.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="87.0" text="Back" />
       <Label fx:id="message" layoutX="134.0" layoutY="32.0" />
    </children>
 </AnchorPane>

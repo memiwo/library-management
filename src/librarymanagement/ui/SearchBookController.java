@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import librarymanagement.business.Book;
 import librarymanagement.business.LibraryMember;
+import librarymanagement.dataaccess.BookService;
 import librarymanagement.dataaccess.LibraryMemberService;
 
 public class SearchBookController {
@@ -28,18 +29,38 @@ public class SearchBookController {
 	Label message;
 	
 	public static Book searchedBook;
+
+	Utility utility = new Utility();
 	
 	private LibraryMemberService memberService = new LibraryMemberService();
+	private BookService bookService = new BookService();
 	
 	public void search(){
 		LibraryMember member = memberService.get(Integer.valueOf(tfMemberId.getText()));
+		
 		if(member == null){
-			//show memeber does not exist
+			//show member does not exist
 			message.setText("member is not found");
+			return;
 		}else{
-			message.setText("member is found");
+			utility.openCheckinBook();
+			//Perform book search by ISBN number
+			//if book is found, show the Book information Window
+			/*try{
+				//set the scene to the dashboard and display
+				Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckoutBook.fxml"));
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				Main.mainStage.setScene(scene);
+				Main.mainStage.show();
+				Main.mainStage.setResizable(false);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}*/
 		}
+		
 	
+		//utility.openCheckinBook();
 		//Perform book search by ISBN number
 		//if book is found, show the Book information Window
 		/*try{
