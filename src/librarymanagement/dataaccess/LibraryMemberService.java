@@ -1,6 +1,7 @@
 package librarymanagement.dataaccess;
 
 import java.util.List;
+import java.util.Optional;
 
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
@@ -20,18 +21,24 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	@Override
 	public void save(LibraryMember object) {
 		libraryMembers.add(object);
+		saveAll(libraryMembers);
+	}
+	
+	private void saveAll(List<LibraryMember> list){
+		persistanceManager.saveEntity(list);
 	}
 
 	@Override
 	public void save(List<LibraryMember> object) {
-		// TODO Auto-generated method stub
+		this.libraryMembers.addAll(object);
+		saveAll(libraryMembers);
 		
 	}
 
 	@Override
 	public LibraryMember get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return libraryMembers.stream().filter(m -> m.getMemberNumber() == id).findFirst().orElse(null);
 	}
 
 	@Override
@@ -45,5 +52,6 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
