@@ -4,6 +4,7 @@ import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import librarymanagement.business.Authorization;
 
@@ -24,6 +25,8 @@ public class SystemController {
 	Label welcomeLbl = new Label();
 	@FXML
 	FlowPane flowPane = new FlowPane();
+	@FXML
+	public AnchorPane anchPane = new AnchorPane();
 	
 	Utility utility = new Utility();
 	
@@ -54,24 +57,28 @@ public class SystemController {
 	}
 	
 	public void addNewLibraryMember(){
-		utility.openAddNewLibraryMember();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "AddNewLibraryMember.fxml");
 	}
 	
 	public void editLibraryMemberInfo(){
-		utility.openEditMemberSearch();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "EditMemberSearch.fxml");
 	}
 	
 	public void addBook(){
-		//utility.openAddBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "MangeBooks.fxml");
 	}
 	
 	public void checkOutBook(){
-		utility.openSearchBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "SearchBook.fxml");
 	}
 	
 	public void checkInBook(){
-
-		//utility.openCheckinBook();
+		anchPane.getChildren().clear();
+		utility.displayScreenInDashBoard(anchPane, "CheckOutBook.fxml");
 	}
 	
 	public void logout(){
