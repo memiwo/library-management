@@ -2,6 +2,8 @@ package librarymanagement.dataaccess;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
@@ -43,14 +45,13 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		libraryMembers = libraryMembers.stream().filter(m -> m.getMemberNumber() != id).collect(Collectors.toList());
 		
 	}
 
 	@Override
 	public List<LibraryMember> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return libraryMembers;
 	}
 	
 

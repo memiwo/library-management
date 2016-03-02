@@ -2,7 +2,9 @@ package librarymanagement.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import librarymanagement.business.Book;
 import librarymanagement.business.LibraryMember;
@@ -56,6 +58,10 @@ public class TestPersistance {
 		member.setMemberNumber(1234);
 		LibraryMemberService libraryMemberService = new LibraryMemberService();
 		libraryMemberService.save(member);
+		
+		List<String> asList = Arrays.asList("hello", "my", "dear", "world");
+		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
+		asList.stream().forEach(System.out::println);
 		
 		
 	}
