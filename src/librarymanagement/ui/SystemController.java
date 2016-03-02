@@ -75,7 +75,6 @@ public class SystemController {
 	}
 	
 	public void logout(){
-
 		utility.openLogin();
 	}
 	
