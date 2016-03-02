@@ -98,6 +98,7 @@ public class Utility {
 	}
 	
 	public void openCheckinBook(){
+		openWindow("CheckOutBook.fxml");
 		//create the checkinbook.fxml
 	}
 	

@@ -10,6 +10,7 @@ public class Checkout implements Serializable{
 	private LocalDate dueDate;
 	private Book book;
 	
+	
 	public LocalDate getCheckoutDate() {
 		return checkoutDate;
 	}
