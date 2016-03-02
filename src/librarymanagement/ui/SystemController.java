@@ -62,7 +62,7 @@ public class SystemController {
 	}
 	
 	public void addBook(){
-		utility.openAddBook();
+		//utility.openAddBook();
 	}
 	
 	public void checkOutBook(){
@@ -71,7 +71,7 @@ public class SystemController {
 	
 	public void checkInBook(){
 
-		utility.openCheckinBook();
+		//utility.openCheckinBook();
 	}
 	
 	public void logout(){

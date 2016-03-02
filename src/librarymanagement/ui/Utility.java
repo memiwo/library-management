@@ -102,6 +102,10 @@ public class Utility {
 		//create the checkinbook.fxml
 	}
 	
+	public void completeCheckoutBook(){
+		openWindow("CheckOutBook.fxml");
+	}
+	
 	public void openBooks(){
 		//create addBook window
 		openWindow("MangeBooks.fxml");

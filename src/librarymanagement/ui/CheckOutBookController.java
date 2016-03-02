@@ -1,15 +1,18 @@
 package librarymanagement.ui;
 
-import application.Main;
+import java.time.LocalDate;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import librarymanagement.business.Author;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
+import librarymanagement.business.Checkout;
+import librarymanagement.business.LibraryMember;
+import librarymanagement.dataaccess.BookService;
+import librarymanagement.dataaccess.LibraryMemberService;
 
 public class CheckOutBookController {
 	
@@ -30,9 +33,25 @@ public class CheckOutBookController {
 	
 	Utility utility = new Utility();
 	
+	private LibraryMemberService memberService = new LibraryMemberService();
+	
+	BookService bookService = new BookService();
+	
 	@FXML
 	public void initialize(){
 		Book book = SearchBookController.searchedBook;	
+		LibraryMember member = SearchBookController.member;
+		
+		BookCopy copy = book.getAvailableCopy();
+		
+		Checkout checkout = new Checkout(copy);		
+		memberService.addCheckout(member, checkout);
+		
+		//Gets updated member data with list of checked out books
+		member = memberService.get(member.getMemberNumber());
+		
+		//updates book info
+		bookService.checkoutCopy(copy);
 		
 		lblTitle.setText(book.getTitle());
 		lblISBN.setText(book.getISBN().toString());
