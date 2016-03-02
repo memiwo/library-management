@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import application.Main;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
 
@@ -32,8 +33,8 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 
 	@Override
 	public void save(List<LibraryMember> object) {
-		this.libraryMembers.addAll(object);
-		saveAll(libraryMembers);
+		saveAll(object);
+		libraryMembers = findAll();
 		
 	}
 
@@ -51,7 +52,7 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 
 	@Override
 	public List<LibraryMember> findAll() {
-		return libraryMembers;
+		return persistanceManager.getEntityList();
 	}
 	
 

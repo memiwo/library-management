@@ -12,9 +12,10 @@ public class Utility {
 	private void openWindow(String windowName){
 		try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+windowName));
-			Scene scene = new Scene(root);
+			Scene scene = new Scene(root,800,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Main.mainStage.setScene(scene);
+			Main.mainStage.centerOnScreen();
 			Main.mainStage.show();
 			Main.mainStage.setResizable(false);
 		} catch(Exception e) {
