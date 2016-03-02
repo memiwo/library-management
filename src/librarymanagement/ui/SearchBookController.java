@@ -33,6 +33,7 @@ public class SearchBookController {
 	Utility utility = new Utility();
 	
 	private LibraryMemberService memberService = new LibraryMemberService();
+	
 	private BookService bookService = new BookService();
 	
 	public void search(){

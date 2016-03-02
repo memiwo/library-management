@@ -1,9 +1,13 @@
+
 package librarymanagement.ui;
+
+import java.io.IOException;
 
 import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import librarymanagement.business.Book;
 
@@ -147,5 +151,14 @@ public class Utility {
 		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
 		launchForm(loader);
 	}
-	
+	public void displayScreenInDashBoard(AnchorPane anchPane, String screenName){
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+screenName));
+			AnchorPane a = (AnchorPane)root;
+			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			anchPane.getChildren().add(a);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

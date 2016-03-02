@@ -24,6 +24,9 @@ public class TestPersistance {
 		
 		User user = new User();
 		user.setFirstName("Issa");
+		user.getRoles().add(Authorization.LIBRARIAN);
+		user.setUserName("issa");
+		user.setPassword("issa123");
 		
 		User user2 = new User();
 		user2.setFirstName("Ashraf");
@@ -32,6 +35,10 @@ public class TestPersistance {
 		user2.setPassword("admin");
 		User user3 = new User();
 		user3.setFirstName("Pat");
+		user3.getRoles().add(Authorization.ADMINISTRATOR);
+		user3.getRoles().add(Authorization.LIBRARIAN);
+		user3.setUserName("pat");
+		user3.setPassword("pat123");
 		
 		User u2 = new User();
 		u2.setFirstName("John");
