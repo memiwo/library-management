@@ -3,7 +3,6 @@ package librarymanagement.dataaccess;
 import java.util.List;
 
 import librarymanagement.business.LibraryMember;
-import librarymanagement.business.User;
 
 public class LibraryMemberService implements Dao<LibraryMember>{
 
@@ -11,7 +10,7 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	
 	SerializationPersistanceManager<LibraryMember> persistanceManager = new SerializationPersistanceManager<LibraryMember>(LIBRARYMEMBER_FILE);
 	
-	List<LibraryMember> libraryMembers;
+	private List<LibraryMember> libraryMembers;
 	
 	public LibraryMemberService() {
 		libraryMembers = persistanceManager.getEntityList();
@@ -19,31 +18,37 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	
 	@Override
 	public void save(LibraryMember object) {
-		libraryMembers.add(object);
+		persistanceManager.saveEntity(libraryMembers);	
 	}
 
 	@Override
 	public void save(List<LibraryMember> object) {
-		// TODO Auto-generated method stub
+		persistanceManager.saveEntity(libraryMembers);
 		
 	}
-
 	@Override
 	public LibraryMember get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		LibraryMember member = null;
+		for(LibraryMember libMem : libraryMembers){
+			if(id == libMem.getMemberNumber()){
+				member = libMem;
+			}
+		}
+		return member;
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		for(LibraryMember libMem : libraryMembers){
+			if(id == libMem.getMemberNumber()){
+				libraryMembers.remove(libMem);
+			}
+		}
 	}
 
 	@Override
 	public List<LibraryMember> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return libraryMembers;
 	}
 
 }
