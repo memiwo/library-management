@@ -30,21 +30,15 @@ public class AddMemberController {
 	Button btnSave = new Button();
 	@FXML
 	Button btnBack = new Button();
+	Utility utility = new Utility();
 	
 	public void save(){
-		//TODO
+		//Do some validation and if all pass then
+		//save the Member by accessing LibraryMemberSerivce
+		utility.openDashboard();
 	}
 	
 	public void back(){
-		try{
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Dashboard.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		utility.openDashboard();
 	}
 }

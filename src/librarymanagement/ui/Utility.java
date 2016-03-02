@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 public class Utility {
 
 	
-	private  void openWindow(String windowName){
+	private void openWindow(String windowName){
 		try{
 			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/"+windowName));
 			Scene scene = new Scene(root);
@@ -21,12 +21,36 @@ public class Utility {
 		}
 	}
 	
-	public  void OpenLogin(){
+	public void openLogin(){
+		openWindow("Login.fxml");
+	}
+	
+	public void openDashboard(){
 		openWindow("Dashboard.fxml");
 	}
 	
-	public  void openAddNewLibraryMember(){
+	public void openAddNewLibraryMember(){
 		openWindow("AddNewLibraryMember.fxml");
+	}
+	
+	public void openSearchBook(){
+		openWindow("SearchBook.fxml");
+	}
+	
+	public void openAddMember(){
+		openWindow("AddNewLibraryMember.fxml");
+	}
+	
+	public void openCheckinBook(){
+		//create the checkinbook.fxml
+	}
+	
+	public void openAddBook(){
+		//create addBook window
+	}
+	
+	public void openEditMemberSearch(){
+		openWindow("EditMemberSearch.fxml");
 	}
 	
 }

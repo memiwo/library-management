@@ -9,12 +9,7 @@
 
 <AnchorPane prefHeight="256.0" prefWidth="189.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagement.ui.SystemController">
    <children>
-      <Label fx:id="welcomeLbl" alignment="CENTER" layoutX="2.0" layoutY="1.0" prefHeight="27.0" prefWidth="183.0" text="Welcome">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <FlowPane alignment="TOP_CENTER" layoutX="6.0" layoutY="48.0" orientation="VERTICAL" prefHeight="159.0" prefWidth="183.0" rowValignment="TOP">
+      <FlowPane fx:id="flowPane" alignment="TOP_CENTER" layoutX="6.0" layoutY="48.0" orientation="VERTICAL" prefHeight="159.0" prefWidth="183.0" rowValignment="TOP">
          <children>
             <Button fx:id="addNewMember" mnemonicParsing="false" onAction="#addNewLibraryMember" text="Add New Library Member">
                <FlowPane.margin>
@@ -44,5 +39,10 @@
          </children>
       </FlowPane>
       <Button fx:id="logout" layoutX="10.0" layoutY="217.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Label fx:id="welcomeLbl" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="165.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

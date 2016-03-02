@@ -1,12 +1,9 @@
 package librarymanagement.ui;
 
-import application.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 
 public class SystemController {
 	@FXML
@@ -23,62 +20,52 @@ public class SystemController {
 	Button logout = new Button();
 	@FXML
 	Label welcomeLbl = new Label();
+	@FXML
+	FlowPane flowPane = new FlowPane();
 	
 	Utility utility = new Utility();
 	
-	public SystemController(){
+	@FXML
+	public void initialize(){
 		welcomeLbl.setText("Welcome");
-	}
-	
-	public SystemController(String name){
-		welcomeLbl.setText("Welcome "+name);
+		//if administrator
+		//flowPane.getChildren().remove(checkOutBook);
+		//flowPane.getChildren().remove(checkInBook);
+		
+		//if librarian
+		//flowPane.getChildren().remove(addNewMember);
+		//flowPane.getChildren().remove(editMember);
+		//flowPane.getChildren().remove(addBook);
 	}
 
-	public void addNewLibraryMember(){
-		utility.openAddNewLibraryMember();
-		/*try{
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/AddNewLibraryMember.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}*/
-	}
-	
-	public void editLibraryMemberInfo(){
-		//TODO
-	}
-	
-	public void addBook(){
-		//TODO
+	public SystemController(){
 		
 	}
 	
+	public void addNewLibraryMember(){
+		utility.openAddNewLibraryMember();
+	}
+	
+	public void editLibraryMemberInfo(){
+		utility.openEditMemberSearch();
+	}
+	
+	public void addBook(){
+		utility.openAddBook();
+	}
+	
 	public void checkOutBook(){
-		//TODO
+		utility.openSearchBook();
 	}
 	
 	public void checkInBook(){
 
-		//TODO
+		utility.openCheckinBook();
 	}
 	
 	public void logout(){
-		utility.OpenLogin();
-		/*try{
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Login.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-			//Set LoginController.LoginUer to null
-		} catch(Exception e) {
-			e.printStackTrace();
-		}*/
+
+		utility.openLogin();
 	}
 	
 }
