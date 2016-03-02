@@ -25,7 +25,7 @@ void initData(int copyNumber,Book book) {
 public void addCopy(){
 	BookCopy bookcopy = new BookCopy();
 	bookcopy.setCopyNumber(this.copyNumber);
-	book.setBookCopy(bookcopy);
+	book.getBookCopy().add(bookcopy);
 }
 
 public void back(){
