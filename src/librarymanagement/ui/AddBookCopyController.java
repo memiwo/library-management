@@ -36,14 +36,15 @@ void initData(Book book) {
 
 public void addCopy(){
 	BookCopy bookcopy = new BookCopy();
+
 	this.copyNumber =Integer.parseInt(tfUniquNumber.getText());
 	bookcopy.setCopyNumber(this.copyNumber);
 	bookcopy.setAvailable(true);
-	book.getBookCopy().add(bookcopy);
+	this.book.getBookCopy().add(bookcopy);
 	BookService bs = new BookService();
 	List<Book> books = bs.findAll();
 	for(Book b : books){
-		if(b.getISBN().toString().equals(this.book.getISBN().toString())){
+		if(b.getISBN() ==  this.book.getISBN()){
 			books.set(books.indexOf(b),this.book);
 		}
 	}

@@ -1,5 +1,7 @@
 package librarymanagement.ui;
 
+import java.io.IOException;
+
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.Book;
-import librarymanagement.business.BookCopy;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.BookService;
 import librarymanagement.dataaccess.LibraryMemberService;
@@ -27,7 +29,9 @@ public class SearchBookController {
 	TextField tfMemberId;
 	
 	@FXML
-	Label message;
+	Label message;	
+	@FXML
+	AnchorPane anchPane = new AnchorPane();
 	
 	public static Book searchedBook;
 	
@@ -51,13 +55,26 @@ public class SearchBookController {
 			Book book = bookService.isAvailableForCheckout(Integer.valueOf(tfISBN.getText()));
 			
 			if(book == null){
-				message.setText("Book is not availabler");
+				message.setText("Book is not available");
+				return;
+			}
+			if(book.getAvailableCopy() == null){
+				message.setText("All Book copies are checked out");
 				return;
 			}
 			SearchBookController.searchedBook = book;
 			SearchBookController.member = member;
 			
-			utility.completeCheckoutBook();
+			anchPane.getChildren().clear();
+			try {
+				Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckOutBook.fxml"));
+				AnchorPane a = (AnchorPane)root;
+				a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				anchPane.getChildren().add(a);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			//utility.completeCheckoutBook();
 			
 		}		
 	

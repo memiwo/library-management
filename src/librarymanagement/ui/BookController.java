@@ -49,6 +49,9 @@ public void loadBooksData(){
 	List<Book> books =	bookService.findAll();
 	
 	for (Book book : books) {
+		for(BookCopy cp: book.getBookCopy()){
+			System.out.println("from findAll "+cp.getCopyNumber());
+		}
 		tblBooks.getItems().add(book);
 	}
 }
@@ -68,17 +71,14 @@ private void getSelecteditem(){
 
 void showBookData(Book book){
 	lbltitle.setText(book.getTitle());
-	lblAllowableDaysToBorrow.setText(book.getAllowableDaysToBorrow().toString());
-	lblISBN.setText(book.getISBN().toString());
+	lblAllowableDaysToBorrow.setText(String.valueOf(book.getAllowableDaysToBorrow()));
+	lblISBN.setText(String.valueOf(book.getISBN()));
 	
 	Integer size= book.getBookCopy().size();
 	lblNumberOfCopy.setText(size.toString());
 	
 	tblBookCopies.getItems().clear();
 	tblBookCopies.getItems().setAll(book.getBookCopy());
-	/*for (BookCopy bookcopy : book.getBookCopy()) {
-		tblBookCopies.getItems().add(bookcopy);
-	}*/
 	tblAuthors.getItems().clear();
 	tblAuthors.getItems().setAll(book.getAuthors());
 }

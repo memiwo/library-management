@@ -38,7 +38,7 @@ public class AuthorController {
 		BookService bs = new BookService();
 		List<Book> books = bs.findAll();
 		for(Book b : books){
-			if(b.getISBN().toString().equals(this.book.getISBN().toString())){
+			if(b.getISBN() == this.book.getISBN()){
 				books.set(books.indexOf(b),this.book);
 			}
 		}

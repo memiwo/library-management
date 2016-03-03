@@ -20,7 +20,7 @@ public class Checkout implements Serializable{
 		
 		Book book = bookCopy.getBook();
 		
-		if(book.getAllowableDaysToBorrow() == null || book.getAllowableDaysToBorrow() == 0){
+		if(book.getAllowableDaysToBorrow() == 0){
 			this.dueDate = this.checkoutDate.plusDays(NUMBER_OF_ALLOWED_BORROWED_DAYS);
 		}else{
 			this.dueDate = this.checkoutDate.plusDays(book.getAllowableDaysToBorrow());

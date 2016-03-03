@@ -19,7 +19,7 @@ import librarymanagement.dataaccess.UserService;
 
 public class TestPersistance {
 	public static void main(String[] args){
-	UserService userService = new UserService();
+	/*UserService userService = new UserService();
 		
 		User user = new User();
 		user.setFirstName("Issa");
@@ -90,15 +90,22 @@ public class TestPersistance {
 		b21.setISBN(2222);
 		b21.setTitle("Core Java 2");
 		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE, b11), new BookCopy(2,Boolean.FALSE, b11), new BookCopy(3, Boolean.TRUE, b11));
-
+		
+		b1.setAuthors(Arrays.asList(author));
+		
 		b11.setBookCopy(copies);
 		
 		BookService bookService1 = new BookService();
 		bookService1.save(Arrays.asList(b11,b21));
+		BookService bookService = new BookService();
+		bookService.save(Arrays.asList(b1,b2));*?
 		
+
+		/*BookService bookService = new BookService();
 		for(Book b: bookService1.findAll()){
+			System.out.println("days allowed "+b.getISBN());
 			for(BookCopy bc : b.getBookCopy()){
-				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber());
+				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber()+" isAvailable "+bc.isAvailable());
 				for(BookCopy bcc: bc.getBook().getBookCopy()){
 					System.out.println(bcc.getCopyNumber());
 				}
@@ -110,7 +117,12 @@ public class TestPersistance {
 		member1.setMemberNumber(1234);
 		LibraryMemberService libraryMemberService1 = new LibraryMemberService();
 		libraryMemberService1.save(member1);
-		
+		LibraryMember member = new LibraryMember();
+		member.setFirstName("Issa");
+		member.setMemberNumber(1234);
+		LibraryMemberService libraryMemberService = new LibraryMemberService();
+		libraryMemberService.save(member);
+		*/
 	}
 
 }

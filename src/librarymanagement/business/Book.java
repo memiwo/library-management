@@ -8,10 +8,10 @@ import java.util.List;
 public class Book implements Serializable{
 
 	private String title;
-	private Integer ISBN;
+	private int ISBN;
 	private List<Author> authors = new ArrayList<Author>();
 	//private boolean isAvailable;
-	private Integer allowableDaysToBorrow;
+	private int allowableDaysToBorrow;
 	// TODO is this should be a list of bookCopy?
 	private List<BookCopy> bookCopy = new ArrayList<>();
 	
@@ -30,10 +30,10 @@ public class Book implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Integer getISBN() {
+	public int getISBN() {
 		return ISBN;
 	}
-	public void setISBN(Integer iSBN) {
+	public void setISBN(int iSBN) {
 		ISBN = iSBN;
 	}
 	public List<Author> getAuthors() {
@@ -48,10 +48,10 @@ public class Book implements Serializable{
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}*/
-	public Integer getAllowableDaysToBorrow() {
+	public int getAllowableDaysToBorrow() {
 		return allowableDaysToBorrow;
 	}
-	public void setAllowableDaysToBorrow(Integer allowableDaysToBorrow) {
+	public void setAllowableDaysToBorrow(int allowableDaysToBorrow) {
 		this.allowableDaysToBorrow = allowableDaysToBorrow;
 	}
 	public List<BookCopy> getBookCopy() {
@@ -62,7 +62,12 @@ public class Book implements Serializable{
 	}
 	
 	public BookCopy getAvailableCopy(){
-		return bookCopy.stream().filter(bc -> bc.isAvailable()).findFirst().orElseGet(null);
+		for(BookCopy bc: bookCopy){
+			if(bc.isAvailable()){
+				return bc;
+			}
+		}
+		return null;
 	}
 	
 }

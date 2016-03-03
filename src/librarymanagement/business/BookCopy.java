@@ -7,13 +7,13 @@ public class BookCopy implements Serializable{
 
 	// TODO should Add new field copy availability
 	// and due date if not available
-	private Integer copyNumber;
+	private int copyNumber;
 	private boolean isAvailable;
 	private Book book;
 
 	public BookCopy() {
 	}
-	public BookCopy(Integer copyNumber, boolean isAvailable, Book book) {
+	public BookCopy(int copyNumber, boolean isAvailable, Book book) {
 		this.copyNumber = copyNumber;
 		this.isAvailable = isAvailable;
 		this.book = book;
@@ -33,11 +33,11 @@ public class BookCopy implements Serializable{
 		this.isAvailable = isAvailable;
 	}
 
-	public Integer getCopyNumber() {
+	public int getCopyNumber() {
 		return copyNumber;
 	}
 
-	public void setCopyNumber(Integer copyNumber) {
+	public void setCopyNumber(int copyNumber) {
 		this.copyNumber = copyNumber;
 	}
 	
