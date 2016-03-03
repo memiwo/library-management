@@ -83,6 +83,12 @@ void showBookData(Book book){
 	tblAuthors.getItems().setAll(book.getAuthors());
 }
 
+
+public void refresh(){
+	loadBooksData();
+	getSelecteditem();
+}
+
 @FXML
 public void openAddBookCopy(){
 	

@@ -32,6 +32,7 @@
                      </columns>
                   </TableView>
                   <Button layoutX="147.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAddBook" text="AddBook" />
+                  <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="417.0">
@@ -44,12 +45,12 @@
                                  <children>
                                     <TableView fx:id="tblAuthors" prefHeight="185.0" prefWidth="399.0">
                                        <columns>
-                                          <TableColumn prefWidth="75.0" text="first name" >
+                                          <TableColumn prefWidth="75.0" text="first name">
                                            <cellValueFactory>
                               					<PropertyValueFactory property="firstName" /> 
                               				</cellValueFactory>
                                           </TableColumn>
-                                          <TableColumn prefWidth="75.0" text="Last Name" >
+                                          <TableColumn prefWidth="75.0" text="Last Name">
                                           <cellValueFactory>
                               					<PropertyValueFactory property="lastName" /> 
                               				</cellValueFactory>
@@ -66,12 +67,12 @@
                                  <children>
                                     <TableView fx:id="tblBookCopies" layoutY="-2.0" prefHeight="187.0" prefWidth="590.0">
                                        <columns>
-                                        <TableColumn editable="false" prefWidth="115.0" resizable="false" sortable="false" text="copy number" >
+                                        <TableColumn editable="false" prefWidth="115.0" resizable="false" sortable="false" text="copy number">
                                         <cellValueFactory>
                               				<PropertyValueFactory property="CopyNumber" /> 
                               			</cellValueFactory>
                                         </TableColumn>
-                        				<TableColumn id="title" prefWidth="118.0" text="isAvailable" >
+                        				<TableColumn id="title" prefWidth="118.0" text="isAvailable">
                         				<cellValueFactory>
                               				<PropertyValueFactory property="Available" /> 
                               			</cellValueFactory>
