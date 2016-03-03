@@ -69,7 +69,6 @@ public class SystemController {
 	public void addBook(){
 		anchPane.getChildren().clear();
 		utility.displayScreenInDashBoard(anchPane, "MangeBooks.fxml");
-
 	}
 	
 	public void checkOutBook(){

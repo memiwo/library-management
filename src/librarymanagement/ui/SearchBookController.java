@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.BookService;
 import librarymanagement.dataaccess.LibraryMemberService;
@@ -29,6 +30,9 @@ public class SearchBookController {
 	Label message;
 	
 	public static Book searchedBook;
+	
+	public static LibraryMember member;
+	
 
 	Utility utility = new Utility();
 	
@@ -44,37 +48,19 @@ public class SearchBookController {
 			message.setText("member is not found");
 			return;
 		}else{
-			utility.openCheckinBook();
-			//Perform book search by ISBN number
-			//if book is found, show the Book information Window
-			/*try{
-				//set the scene to the dashboard and display
-				Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckoutBook.fxml"));
-				Scene scene = new Scene(root);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				Main.mainStage.setScene(scene);
-				Main.mainStage.show();
-				Main.mainStage.setResizable(false);
-			} catch(Exception e) {
-				e.printStackTrace();
-			}*/
-		}
-		
+			Book book = bookService.isAvailableForCheckout(Integer.valueOf(tfISBN.getText()));
+			
+			if(book == null){
+				message.setText("Book is not availabler");
+				return;
+			}
+			SearchBookController.searchedBook = book;
+			SearchBookController.member = member;
+			
+			utility.completeCheckoutBook();
+			
+		}		
 	
-		//utility.openCheckinBook();
-		//Perform book search by ISBN number
-		//if book is found, show the Book information Window
-		/*try{
-			//set the scene to the dashboard and display
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckoutBook.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}*/
 	}
 	
 	public void back(){

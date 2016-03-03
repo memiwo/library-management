@@ -1,21 +1,18 @@
 package librarymanagement.dataaccess;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import application.Main;
+import librarymanagement.business.Checkout;
 import librarymanagement.business.LibraryMember;
-import librarymanagement.business.User;
 
 public class LibraryMemberService implements Dao<LibraryMember>{
 
 	private static final String LIBRARYMEMBER_FILE = "library_members.bin";
 	
-	SerializationPersistanceManager<LibraryMember> persistanceManager = new SerializationPersistanceManager<LibraryMember>(LIBRARYMEMBER_FILE);
+	private SerializationPersistanceManager<LibraryMember> persistanceManager = new SerializationPersistanceManager<LibraryMember>(LIBRARYMEMBER_FILE);
 	
-	List<LibraryMember> libraryMembers;
+	private List<LibraryMember> libraryMembers;
 	
 	public LibraryMemberService() {
 		libraryMembers = persistanceManager.getEntityList();
@@ -53,6 +50,22 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	@Override
 	public List<LibraryMember> findAll() {
 		return persistanceManager.getEntityList();
+	}
+	
+	public void addCheckout(LibraryMember member, Checkout checkout){
+		LibraryMember mem = libraryMembers.stream().filter(m -> m.getMemberNumber() == member.getMemberNumber()).findFirst().orElseGet(null);
+		if(mem != null){
+			mem.getCheckoutRecords().add(checkout);
+		}
+
+		for(LibraryMember m: libraryMembers){
+			if(m.getMemberNumber() == mem.getMemberNumber()){
+				libraryMembers.set(libraryMembers.indexOf(m), mem);
+			}
+		}
+		
+		save(libraryMembers);
+		
 	}
 	
 

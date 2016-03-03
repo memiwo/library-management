@@ -5,12 +5,27 @@ import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class Checkout implements Serializable{
+	
+	private static final int NUMBER_OF_ALLOWED_BORROWED_DAYS = 21;
 
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
-	private Book book;
+	private BookCopy bookCopy;
 	
-	
+	public Checkout(BookCopy bookCopy) {
+
+		this.bookCopy = bookCopy;
+		
+		this.checkoutDate = LocalDate.now();
+		
+		Book book = bookCopy.getBook();
+		
+		if(book.getAllowableDaysToBorrow() == null || book.getAllowableDaysToBorrow() == 0){
+			this.dueDate = this.checkoutDate.plusDays(NUMBER_OF_ALLOWED_BORROWED_DAYS);
+		}else{
+			this.dueDate = this.checkoutDate.plusDays(book.getAllowableDaysToBorrow());
+		}
+	}
 	public LocalDate getCheckoutDate() {
 		return checkoutDate;
 	}
@@ -23,11 +38,12 @@ public class Checkout implements Serializable{
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
-	public Book getBook() {
-		return book;
+	public BookCopy getBookCopy() {
+		return bookCopy;
 	}
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBookCopy(BookCopy bookCopy) {
+		this.bookCopy = bookCopy;
 	}
+	
 	
 }

@@ -9,12 +9,11 @@ import java.util.stream.Collectors;
 
 import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.Checkout;
-import librarymanagement.business.CheckoutRecord;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
 import librarymanagement.dataaccess.BookService;
-import librarymanagement.dataaccess.CheckoutRecordService;
 import librarymanagement.dataaccess.LibraryMemberService;
 import librarymanagement.dataaccess.UserService;
 
@@ -83,19 +82,34 @@ public class TestPersistance {
 		
 		
 		
-		Checkout ch = new Checkout();
-		ch.setBook(book);
-		ch.setCheckoutDate(LocalDate.of(2016, 3, 02));
-		ch.setDueDate(LocalDate.of(2016, 03, 10));
 		
-		CheckoutRecordService recordService = new CheckoutRecordService();
-		recordService.save(ch);
+		Book b1 = new Book();
+		b1.setTitle("Domain Driven Design 2");
+		b1.setISBN(334455);
+		Book b2 = new Book();
+		b2.setISBN(2222);
+		b2.setTitle("Core Java 2");
+		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE, b1), new BookCopy(2,Boolean.FALSE, b1), new BookCopy(3, Boolean.TRUE, b1));
+
+		b1.setBookCopy(copies);
 		
-		CheckoutRecord record = recordService.getCheckoutRecord();
-		List<Checkout> checkouts = record.getCheckouts();
-		//System.out.println(record.get);
-		checkouts.stream().forEach( c -> System.out.println(c.getBook().getTitle()));
+		BookService bookService = new BookService();
+		bookService.save(Arrays.asList(b1,b2));
 		
+		for(Book b: bookService.findAll()){
+			for(BookCopy bc : b.getBookCopy()){
+				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber());
+				for(BookCopy bcc: bc.getBook().getBookCopy()){
+					System.out.println(bcc.getCopyNumber());
+				}
+			}
+			System.out.println(b.getTitle());
+		}
+		
+		LibraryMember member = new LibraryMember();
+		member.setMemberNumber(1234);
+		LibraryMemberService libraryMemberService = new LibraryMemberService();
+		libraryMemberService.save(member);
 		
 	}
 

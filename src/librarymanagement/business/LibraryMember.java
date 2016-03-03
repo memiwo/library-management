@@ -1,12 +1,21 @@
 package librarymanagement.business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class LibraryMember extends Person implements Serializable{
 
 	private Integer memberNumber;
-	private CheckoutRecord checkoutRecord;
+	private List<Checkout> checkoutRecords = new ArrayList<>();
+	
+	public LibraryMember() {
+	}
+	
+	public LibraryMember(int memberNumber){
+		this.memberNumber = memberNumber;
+	}
 
 	public Integer getMemberNumber() {
 		return memberNumber;
@@ -16,12 +25,14 @@ public class LibraryMember extends Person implements Serializable{
 		this.memberNumber = memberNumber;
 	}
 
-	public CheckoutRecord getCheckoutRecord() {
-		return checkoutRecord;
+	public List<Checkout> getCheckoutRecords() {
+		return checkoutRecords;
 	}
 
-	public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
-		this.checkoutRecord = checkoutRecord;
+	public void setCheckoutRecords(List<Checkout> checkoutRecords) {
+		this.checkoutRecords = checkoutRecords;
 	}
+	
+	
 	
 }

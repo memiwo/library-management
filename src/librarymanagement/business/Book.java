@@ -10,7 +10,7 @@ public class Book implements Serializable{
 	private String title;
 	private Integer ISBN;
 	private List<Author> authors = new ArrayList<Author>();
-	private boolean isAvailable;
+	//private boolean isAvailable;
 	private Integer allowableDaysToBorrow;
 	// TODO is this should be a list of bookCopy?
 	private List<BookCopy> bookCopy = new ArrayList<>();
@@ -42,12 +42,12 @@ public class Book implements Serializable{
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-	public boolean isAvailable() {
+	/*public boolean isAvailable() {
 		return isAvailable;
 	}
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
-	}
+	}*/
 	public Integer getAllowableDaysToBorrow() {
 		return allowableDaysToBorrow;
 	}
@@ -59,6 +59,10 @@ public class Book implements Serializable{
 	}
 	public void setBookCopy(List<BookCopy> bookCopy) {
 		this.bookCopy = bookCopy;
+	}
+	
+	public BookCopy getAvailableCopy(){
+		return bookCopy.stream().filter(bc -> bc.isAvailable()).findFirst().orElseGet(null);
 	}
 	
 }
