@@ -44,6 +44,8 @@ public class AddMemberController {
 	AnchorPane anchPane = new AnchorPane();
 	
 	LibraryMemberService libMemberService = new LibraryMemberService();
+	
+	Utility utility = new Utility();
 
 
 	@FXML
@@ -141,15 +143,7 @@ public class AddMemberController {
 	
 	public void back(){
 		EditMemberSearchController.memberToEdit = null;
-		//utility.openDashboard();
 		anchPane.getChildren().clear();
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/EditMemberSearch.fxml"));
-			AnchorPane a = (AnchorPane)root;
-			a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			anchPane.getChildren().add(a);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		utility.displayScreenInDashBoard(anchPane, "EditMemberSearch.fxml");
 	}
 }
