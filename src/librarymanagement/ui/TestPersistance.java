@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.Checkout;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.business.User;
@@ -82,7 +83,7 @@ public class TestPersistance {
 		
 		
 		
-		/*Book b1 = new Book();
+		Book b1 = new Book();
 		b1.setTitle("Domain Driven Design 2");
 		b1.setISBN(334455);
 		Book b2 = new Book();
@@ -103,7 +104,12 @@ public class TestPersistance {
 				}
 			}
 			System.out.println(b.getTitle());
-		}*/
+		}
+		
+		LibraryMember member = new LibraryMember();
+		member.setMemberNumber(1234);
+		LibraryMemberService libraryMemberService = new LibraryMemberService();
+		libraryMemberService.save(member);
 		
 	}
 
