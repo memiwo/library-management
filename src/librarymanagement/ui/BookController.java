@@ -29,6 +29,10 @@ Label lblISBN;
 @FXML
 Label lblNumberOfCopy;
 @FXML
+Label lblAllowableDaysToBorrow;
+@FXML
+Label lblIsAvailable;
+@FXML
 AnchorPane ap1;
 
 Book rowData;
@@ -56,7 +60,7 @@ private void getSelecteditem(){
 	        if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
 	             rowData = row.getItem();
 	             showBookData(rowData);
-	            System.out.println(rowData);
+	            //System.out.println(rowData);
 	        }
 	    });
 	    return row ;
@@ -64,7 +68,17 @@ private void getSelecteditem(){
 }
 
 void showBookData(Book book){
+	lbltitle.setText(book.getTitle());
+	lblAllowableDaysToBorrow.setText(book.getAllowableDaysToBorrow().toString());
+	lblISBN.setText(book.getISBN().toString());
 	
+	Integer size= book.getBookCopy().size();
+	lblNumberOfCopy.setText(size.toString());
+	
+	tblBookCopies.getItems().clear();
+	for (BookCopy bookcopy : book.getBookCopy()) {
+		tblBookCopies.getItems().add(bookcopy);
+	}
 }
 
 @FXML
