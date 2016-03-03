@@ -42,10 +42,18 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView id="tblAuthors" prefHeight="185.0" prefWidth="399.0">
+                                    <TableView fx:id="tblAuthors" prefHeight="185.0" prefWidth="399.0">
                                        <columns>
-                                          <TableColumn prefWidth="75.0" text="first name" />
-                                          <TableColumn prefWidth="75.0" text="lastname" />
+                                          <TableColumn prefWidth="75.0" text="first name" >
+                                           <cellValueFactory>
+                              					<PropertyValueFactory property="firstName" /> 
+                              				</cellValueFactory>
+                                          </TableColumn>
+                                          <TableColumn prefWidth="75.0" text="Last Name" >
+                                          <cellValueFactory>
+                              					<PropertyValueFactory property="lastName" /> 
+                              				</cellValueFactory>
+                                          </TableColumn>
                                        </columns>
                                     </TableView>
                                  </children>
@@ -65,7 +73,7 @@
                                         </TableColumn>
                         				<TableColumn id="title" prefWidth="118.0" text="isAvailable" >
                         				<cellValueFactory>
-                              				<PropertyValueFactory property="isAvailable" /> 
+                              				<PropertyValueFactory property="Available" /> 
                               			</cellValueFactory>
                         				</TableColumn>
                                        </columns>

@@ -151,8 +151,10 @@ public class Utility {
 	
 	public void lunchAddBookAutor(Book book) {
 		// TODO Auto-generated method stub
-		FXMLLoader	loader = getLoader("AddBookCopy.fxml");
+		FXMLLoader	loader = getLoader("AddAuthor.fxml");
 		launchForm(loader);
+		AuthorController ac = loader.getController();
+		ac.initData(book);
 	}
 	public void displayScreenInDashBoard(AnchorPane anchPane, String screenName){
 		try {

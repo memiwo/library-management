@@ -19,7 +19,7 @@ TableView<Book> tblBooks;
 @FXML
 TableView<BookCopy> tblBookCopies;
 @FXML
-TableView<Author> tblAuthor;
+TableView<Author> tblAuthors;
 
 
 @FXML
@@ -79,6 +79,8 @@ void showBookData(Book book){
 	for (BookCopy bookcopy : book.getBookCopy()) {
 		tblBookCopies.getItems().add(bookcopy);
 	}
+	tblAuthors.getItems().clear();
+	tblAuthors.getItems().setAll(book.getAuthors());
 }
 
 @FXML
