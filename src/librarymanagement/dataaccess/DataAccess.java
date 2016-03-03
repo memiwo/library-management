@@ -80,14 +80,16 @@ public class DataAccess {
 		bc11.setAvailable(false);
 		bc11.setBook(b1);
 		bc11.setCopyNumber(1);
+		
 		BookCopy bc12 = new BookCopy();
-		bc11.setAvailable(true);
-		bc11.setBook(b1);
-		bc11.setCopyNumber(5);
+		bc12.setAvailable(true);
+		bc12.setBook(b1);
+		bc12.setCopyNumber(5);
+		
 		BookCopy bc13 = new BookCopy();
-		bc11.setAvailable(true);
-		bc11.setBook(b1);
-		bc11.setCopyNumber(6);
+		bc13.setAvailable(true);
+		bc13.setBook(b1);
+		bc13.setCopyNumber(6);
 		
 		
 		b1.getBookCopy().add(bc11);
@@ -110,13 +112,13 @@ public class DataAccess {
 		bc21.setBook(b2);
 		bc21.setCopyNumber(7);
 		BookCopy bc22 = new BookCopy();
-		bc21.setAvailable(false);
-		bc21.setBook(b2);
-		bc21.setCopyNumber(8);
+		bc22.setAvailable(true);
+		bc22.setBook(b2);
+		bc22.setCopyNumber(8);
 		BookCopy bc23 = new BookCopy();
-		bc21.setAvailable(false);
-		bc21.setBook(b2);
-		bc21.setCopyNumber(9);
+		bc23.setAvailable(true);
+		bc23.setBook(b2);
+		bc23.setCopyNumber(9);
 		
 		b2.getBookCopy().add(bc21);	
 		b2.getBookCopy().add(bc22);
