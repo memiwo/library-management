@@ -85,7 +85,19 @@
                   </FlowPane>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="anchPane" minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="579.0" />
+          <AnchorPane fx:id="anchPane" minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="579.0" style="-fx-background-color: #ffff;">
+               <children>
+                  <Label fx:id="welcomeLbl11" alignment="TOP_LEFT" layoutX="52.0" layoutY="26.0" prefHeight="156.0" prefWidth="658.0" text="Library Management System" textAlignment="CENTER" textFill="#1d96c3" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold" size="59.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="416.0" fitWidth="659.0" layoutX="31.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pile-of-books.jpg" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
