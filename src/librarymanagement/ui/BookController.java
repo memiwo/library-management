@@ -30,8 +30,7 @@ Label lblISBN;
 Label lblNumberOfCopy;
 @FXML
 Label lblAllowableDaysToBorrow;
-@FXML
-Label lblIsAvailable;
+
 @FXML
 AnchorPane ap1;
 
@@ -76,9 +75,10 @@ void showBookData(Book book){
 	lblNumberOfCopy.setText(size.toString());
 	
 	tblBookCopies.getItems().clear();
-	for (BookCopy bookcopy : book.getBookCopy()) {
+	tblBookCopies.getItems().setAll(book.getBookCopy());
+	/*for (BookCopy bookcopy : book.getBookCopy()) {
 		tblBookCopies.getItems().add(bookcopy);
-	}
+	}*/
 	tblAuthors.getItems().clear();
 	tblAuthors.getItems().setAll(book.getAuthors());
 }
