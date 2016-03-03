@@ -58,6 +58,7 @@ public class SystemController {
 	
 	public void addNewLibraryMember(){
 		anchPane.getChildren().clear();
+		Main.currentUser = null;
 		utility.displayScreenInDashBoard(anchPane, "AddNewLibraryMember.fxml");
 	}
 	
@@ -82,6 +83,7 @@ public class SystemController {
 	}
 	
 	public void logout(){
+		Main.currentUser = null;
 		utility.openLogin();
 	}
 	

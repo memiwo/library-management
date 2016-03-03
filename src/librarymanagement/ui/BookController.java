@@ -19,7 +19,7 @@ TableView<Book> tblBooks;
 @FXML
 TableView<BookCopy> tblBookCopies;
 @FXML
-TableView<Author> tblAuthor;
+TableView<Author> tblAuthors;
 
 
 @FXML
@@ -30,8 +30,7 @@ Label lblISBN;
 Label lblNumberOfCopy;
 @FXML
 Label lblAllowableDaysToBorrow;
-@FXML
-Label lblIsAvailable;
+
 @FXML
 AnchorPane ap1;
 
@@ -79,10 +78,15 @@ void showBookData(Book book){
 	lblNumberOfCopy.setText(size.toString());
 	
 	tblBookCopies.getItems().clear();
-	for (BookCopy bookcopy : book.getBookCopy()) {
-		System.out.println("tableView "+bookcopy.getCopyNumber());
-		tblBookCopies.getItems().add(bookcopy);
-	}
+	tblBookCopies.getItems().setAll(book.getBookCopy());
+	tblAuthors.getItems().clear();
+	tblAuthors.getItems().setAll(book.getAuthors());
+}
+
+
+public void refresh(){
+	loadBooksData();
+	getSelecteditem();
 }
 
 @FXML

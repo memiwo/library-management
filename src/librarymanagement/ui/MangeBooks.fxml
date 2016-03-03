@@ -32,6 +32,7 @@
                      </columns>
                   </TableView>
                   <Button layoutX="147.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAddBook" text="AddBook" />
+                  <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="417.0">
@@ -42,10 +43,18 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView id="tblAuthors" prefHeight="185.0" prefWidth="399.0">
+                                    <TableView fx:id="tblAuthors" prefHeight="185.0" prefWidth="399.0">
                                        <columns>
-                                          <TableColumn prefWidth="75.0" text="first name" />
-                                          <TableColumn prefWidth="75.0" text="lastname" />
+                                          <TableColumn prefWidth="75.0" text="first name">
+                                           <cellValueFactory>
+                              					<PropertyValueFactory property="firstName" /> 
+                              				</cellValueFactory>
+                                          </TableColumn>
+                                          <TableColumn prefWidth="75.0" text="Last Name">
+                                          <cellValueFactory>
+                              					<PropertyValueFactory property="lastName" /> 
+                              				</cellValueFactory>
+                                          </TableColumn>
                                        </columns>
                                     </TableView>
                                  </children>
@@ -58,14 +67,14 @@
                                  <children>
                                     <TableView fx:id="tblBookCopies" layoutY="-2.0" prefHeight="187.0" prefWidth="590.0">
                                        <columns>
-                                        <TableColumn editable="false" prefWidth="115.0" resizable="false" sortable="false" text="copy number" >
+                                        <TableColumn editable="false" prefWidth="115.0" resizable="false" sortable="false" text="copy number">
                                         <cellValueFactory>
                               				<PropertyValueFactory property="CopyNumber" /> 
                               			</cellValueFactory>
                                         </TableColumn>
-                        				<TableColumn id="title" prefWidth="118.0" text="isAvailable" >
+                        				<TableColumn id="title" prefWidth="118.0" text="isAvailable">
                         				<cellValueFactory>
-                              				<PropertyValueFactory property="isAvailable" /> 
+                              				<PropertyValueFactory property="Available" /> 
                               			</cellValueFactory>
                         				</TableColumn>
                                        </columns>
@@ -82,16 +91,14 @@
                            <children>
                               <Label layoutX="14.0" layoutY="14.0" text="Title" />
                               <Label layoutX="14.0" layoutY="42.0" text="ISBN" />
-                              <Label layoutX="12.0" layoutY="68.0" text="isAvailable" />
-                              <Label layoutX="13.0" layoutY="93.0" text="allowableDaysToBorrow" />
-                              <Label layoutX="13.0" layoutY="118.0" text="Number of Copies" />
+                              <Label layoutX="13.0" layoutY="71.0" text="allowableDaysToBorrow" />
+                              <Label layoutX="13.0" layoutY="96.0" text="Number of Copies" />
                               <Button layoutX="152.0" layoutY="155.0" mnemonicParsing="false" onAction="#openAddBookAuthor" text="Add Author" />
                               <Button layoutX="243.0" layoutY="155.0" mnemonicParsing="false" onAction="#openAddBookCopy" text="Add a copy" />
-                              <Label fx:id="lbltitle" layoutX="54.0" layoutY="14.0" styleClass="labeldata" stylesheets="@application.css" text="Label" />
-                              <Label fx:id="lblISBN" layoutX="54.0" layoutY="42.0" styleClass="labeldata" text="Label" />
-                              <Label fx:id="lblNumberOfCopy" layoutX="126.0" layoutY="118.0" styleClass="labeldata" text="Label" />
-                              <Label fx:id="lblIsAvailable" layoutX="82.0" layoutY="68.0" styleClass="labeldata" text="Label" />
-                              <Label fx:id="lblAllowableDaysToBorrow" layoutX="152.0" layoutY="93.0" styleClass="labeldata" text="Label" />
+                              <Label fx:id="lbltitle" layoutX="54.0" layoutY="14.0" styleClass="labeldata" stylesheets="@application.css" />
+                              <Label fx:id="lblISBN" layoutX="54.0" layoutY="42.0" styleClass="labeldata" />
+                              <Label fx:id="lblNumberOfCopy" layoutX="126.0" layoutY="96.0" styleClass="labeldata" />
+                              <Label fx:id="lblAllowableDaysToBorrow" layoutX="152.0" layoutY="71.0" styleClass="labeldata" />
                            </children>
                         </AnchorPane>
                      </content>

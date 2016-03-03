@@ -23,6 +23,7 @@ int copyNumber;
 Book book;
 
 void initData(int copyNumber,Book book) {
+	//tfUniquNumber.setText(copyNumber);;
     this.copyNumber = copyNumber;
     this.book = book;
     lblTitle.setText(this.book.getTitle());
@@ -35,7 +36,9 @@ void initData(Book book) {
 
 public void addCopy(){
 	BookCopy bookcopy = new BookCopy();
-	bookcopy.setCopyNumber(Integer.valueOf(tfUniquNumber.getText()));
+
+	this.copyNumber =Integer.parseInt(tfUniquNumber.getText());
+	bookcopy.setCopyNumber(this.copyNumber);
 	bookcopy.setAvailable(true);
 	//book.getBookCopy().add(bookcopy);
 	BookService bs = new BookService();
