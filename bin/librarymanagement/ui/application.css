@@ -6,6 +6,11 @@
 	 -fx-content-display:center ;
 }
 
+.labeldata{
+	-fx-text-alignment:center ;
+	-fx-font-weight: bold ;
+}
+
 .button{
 	-fx-background-radius: 400;
 }

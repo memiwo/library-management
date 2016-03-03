@@ -34,6 +34,8 @@ void initData(Book book) {
 public void addCopy(){
 	BookCopy bookcopy = new BookCopy();
 	bookcopy.setCopyNumber(this.copyNumber);
+	bookcopy.setAvailable(true);
+	
 	book.getBookCopy().add(bookcopy);
 	BookService bs = new BookService();
 	bs.save(this.book);
