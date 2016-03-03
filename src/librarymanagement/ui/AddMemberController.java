@@ -49,7 +49,7 @@ public class AddMemberController {
 	@FXML
 	public void initialize(){
 		if(EditMemberSearchController.memberToEdit!=null){
-			tfMemberID.setText(EditMemberSearchController.memberToEdit.getMemberNumber().toString());
+			tfMemberID.setText(String.valueOf(EditMemberSearchController.memberToEdit.getMemberNumber()));
 			tfFirstName.setText(EditMemberSearchController.memberToEdit.getFirstName());
 			tfLastName.setText(EditMemberSearchController.memberToEdit.getLastName());
 			tfStreet.setText(EditMemberSearchController.memberToEdit.getAddress().getStreet());
@@ -77,7 +77,7 @@ public class AddMemberController {
 		if(EditMemberSearchController.memberToEdit==null){
 			 libMembers = libMemberService.findAll();
 			 for(LibraryMember l :  libMembers){
-				 if(l.getMemberNumber().toString().equals(tfMemberID.getText())){
+				 if(String.valueOf(l.getMemberNumber()).equals(tfMemberID.getText())){
 						errorMsg.append("ID number already exist.").append("\n");
 						break;
 					}
@@ -125,7 +125,7 @@ public class AddMemberController {
 			List<LibraryMember> libMembers = libMemberService.findAll();
 			if(EditMemberSearchController.memberToEdit!=null){
 				for(LibraryMember l : libMembers){
-					if(l.getMemberNumber().toString().equals(libMember.getMemberNumber().toString())){
+					if(String.valueOf(l.getMemberNumber()).equals(String.valueOf(libMember.getMemberNumber()))){
 						libMembers.set(libMembers.indexOf(l), libMember);
 						break;
 					}

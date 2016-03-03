@@ -53,10 +53,23 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 	}
 	
 	public void addCheckout(LibraryMember member, Checkout checkout){
-		LibraryMember mem = libraryMembers.stream().filter(m -> m.getMemberNumber() == member.getMemberNumber()).findFirst().orElseGet(null);
+		//System.out.println("checkout  "+checkout.getBookCopy().getCopyNumber());
+		//libraryMembers.stream().forEach(m->System.out.println(m.getMemberNumber()));
+		/*LibraryMember mem = null;
+		for(LibraryMember m : libraryMembers){
+			if(m.getMemberNumber() == member.getMemberNumber()){
+				mem = m;
+			}
+		}*/
+		LibraryMember mem = libraryMembers.stream()
+				.filter(m -> m.getMemberNumber() == member.getMemberNumber())
+				.findFirst().get();
+		
 		if(mem != null){
 			mem.getCheckoutRecords().add(checkout);
 		}
+		
+		//System.out.println("mem = "+mem.getMemberNumber());
 
 		for(LibraryMember m: libraryMembers){
 			if(m.getMemberNumber() == mem.getMemberNumber()){

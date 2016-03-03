@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import librarymanagement.business.Author;
 import librarymanagement.business.Authorization;
 import librarymanagement.business.Book;
 import librarymanagement.business.BookCopy;
@@ -76,9 +77,12 @@ public class TestPersistance {
 		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
 		asList.stream().forEach(System.out::println);
 		*/
-		Book book = new Book();
+	/*	Book book = new Book();
 		book.setTitle("Design pattern");
 		book.setISBN(123456789);
+		
+		Author author = new Author();
+		author.setFirstName("Ashraf");
 		
 		
 		
@@ -90,23 +94,29 @@ public class TestPersistance {
 		b2.setISBN(2222);
 		b2.setTitle("Core Java 2");
 		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE, b1), new BookCopy(2,Boolean.FALSE, b1), new BookCopy(3, Boolean.TRUE, b1));
-
+		
+		b1.setAuthors(Arrays.asList(author));
+		
 		b1.setBookCopy(copies);
 		
 		BookService bookService = new BookService();
-		bookService.save(Arrays.asList(b1,b2));
+		bookService.save(Arrays.asList(b1,b2));*/
 		
+
+		/*BookService bookService = new BookService();
 		for(Book b: bookService.findAll()){
+			System.out.println("days allowed "+b.getISBN());
 			for(BookCopy bc : b.getBookCopy()){
-				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber());
+				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber()+" isAvailable "+bc.isAvailable());
 				for(BookCopy bcc: bc.getBook().getBookCopy()){
 					System.out.println(bcc.getCopyNumber());
 				}
 			}
 			System.out.println(b.getTitle());
 		}
-		
+		*/
 		LibraryMember member = new LibraryMember();
+		member.setFirstName("Issa");
 		member.setMemberNumber(1234);
 		LibraryMemberService libraryMemberService = new LibraryMemberService();
 		libraryMemberService.save(member);

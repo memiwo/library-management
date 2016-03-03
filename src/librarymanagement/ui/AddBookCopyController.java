@@ -1,5 +1,7 @@
 package librarymanagement.ui;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,12 +35,13 @@ void initData(Book book) {
 
 public void addCopy(){
 	BookCopy bookcopy = new BookCopy();
-	bookcopy.setCopyNumber(this.copyNumber);
+	bookcopy.setCopyNumber(Integer.valueOf(tfUniquNumber.getText()));
 	bookcopy.setAvailable(true);
-	
-	book.getBookCopy().add(bookcopy);
+	//book.getBookCopy().add(bookcopy);
 	BookService bs = new BookService();
-	bs.save(this.book);
+	//bs.save(this.book);
+	System.out.println("copy ...." + bookcopy+" and book is "+this.book);
+	bs.addBookCopy(this.book, bookcopy);
 	close();
 }
 

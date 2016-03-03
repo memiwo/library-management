@@ -7,7 +7,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class LibraryMember extends Person implements Serializable{
 
-	private Integer memberNumber;
+	private int memberNumber;
 	private List<Checkout> checkoutRecords = new ArrayList<>();
 	
 	public LibraryMember() {
@@ -17,11 +17,11 @@ public class LibraryMember extends Person implements Serializable{
 		this.memberNumber = memberNumber;
 	}
 
-	public Integer getMemberNumber() {
+	public int getMemberNumber() {
 		return memberNumber;
 	}
 
-	public void setMemberNumber(Integer memberNumber) {
+	public void setMemberNumber(int memberNumber) {
 		this.memberNumber = memberNumber;
 	}
 

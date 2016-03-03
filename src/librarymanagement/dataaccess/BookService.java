@@ -1,9 +1,7 @@
 package librarymanagement.dataaccess;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import librarymanagement.business.Book;
 import librarymanagement.business.BookCopy;
@@ -23,16 +21,25 @@ public class BookService implements Dao<Book> {
 		save(books);
 		
 	}	
+	
+	public void addBookCopy(Book book, BookCopy copy){
+		List<Book> books = findAll();
+		for(Book b : books){
+			if(b.getISBN() == book.getISBN()){
+				List<BookCopy> copies = b.getBookCopy();
+				copies.add(copy);
+				b.setBookCopy(copies);
+				//b.getBookCopy().add(copy);
+				books.set(books.indexOf(b), b);
+			}
+		}
+		
+		save(books);
+	}
 
 	@Override
 	public void save(List<Book> object) {
-		/*if(books == null){
-			books = persistanceManager.getEntityList();
-			if(books == null){
-				books = new ArrayList<>();
-				books.addAll(object);
-			}
-		}*/
+	
 		persistanceManager.saveEntity(object);
 		books = findAll();
 	}
@@ -71,13 +78,14 @@ public class BookService implements Dao<Book> {
 		if(copy != null){
 		
 			Book book = copy.getBook();
+		
 			List<Book> books = findAll();
 			for(Book b: books){
 				if(b.getISBN() == book.getISBN()){
 					List<BookCopy> copies = b.getBookCopy();
 					for(BookCopy bc: copies){
 						if(bc.getCopyNumber() == copy.getCopyNumber()){
-							bc.setAvailable(Boolean.FALSE);
+							bc.setAvailable(false);
 							copies.set(copies.indexOf(bc), bc);
 						}
 					}
