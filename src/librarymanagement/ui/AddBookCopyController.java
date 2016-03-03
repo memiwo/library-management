@@ -40,6 +40,7 @@ public void addCopy(){
 	this.copyNumber =Integer.parseInt(tfUniquNumber.getText());
 	bookcopy.setCopyNumber(this.copyNumber);
 	bookcopy.setAvailable(true);
+	bookcopy.setBook(this.book);
 	this.book.getBookCopy().add(bookcopy);
 	BookService bs = new BookService();
 	List<Book> books = bs.findAll();
