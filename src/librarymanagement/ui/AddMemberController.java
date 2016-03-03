@@ -146,4 +146,8 @@ public class AddMemberController {
 		anchPane.getChildren().clear();
 		utility.displayScreenInDashBoard(anchPane, "EditMemberSearch.fxml");
 	}
+	
+	public void clearMessage(){
+		error.setText("");
+	}
 }

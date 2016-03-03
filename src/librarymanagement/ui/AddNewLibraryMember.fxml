@@ -18,7 +18,7 @@
       <Label layoutX="83.0" layoutY="63.0" text="Member ID" />
       <Label layoutX="84.0" layoutY="103.0" text="First Name" />
       <Label layoutX="85.0" layoutY="142.0" text="Last Name" />
-      <TextField fx:id="tfMemberID" layoutX="159.0" layoutY="59.0" prefHeight="25.0" prefWidth="326.0" />
+      <TextField fx:id="tfMemberID" layoutX="159.0" layoutY="59.0" onMouseClicked="#clearMessage" prefHeight="25.0" prefWidth="326.0" />
       <TextField fx:id="tfFirstName" layoutX="159.0" layoutY="99.0" prefHeight="25.0" prefWidth="326.0" />
       <TextField fx:id="tfLastName" layoutX="159.0" layoutY="138.0" prefHeight="25.0" prefWidth="326.0" />
       <TextField fx:id="tfStreet" layoutX="159.0" layoutY="174.0" prefHeight="25.0" prefWidth="326.0" />
