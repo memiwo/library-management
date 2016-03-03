@@ -98,5 +98,28 @@ public class BookService implements Dao<Book> {
 		
 	}
 	
+	public void checkinCopy(BookCopy copy){
+		if(copy != null){
+			
+			Book book = copy.getBook();
+		
+			List<Book> books = findAll();
+			for(Book b: books){
+				if(b.getISBN() == book.getISBN()){
+					List<BookCopy> copies = b.getBookCopy();
+					for(BookCopy bc: copies){
+						if(bc.getCopyNumber() == copy.getCopyNumber()){
+							bc.setAvailable(true);
+							copies.set(copies.indexOf(bc), bc);
+						}
+					}
+					books.set(books.indexOf(b), b);
+				}
+			}
+			
+			save(books);
+		}
+	}
+	
 
 }

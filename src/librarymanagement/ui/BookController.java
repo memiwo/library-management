@@ -48,10 +48,7 @@ public void loadBooksData(){
 	
 	List<Book> books =	bookService.findAll();
 	
-	for (Book book : books) {
-		for(BookCopy cp: book.getBookCopy()){
-			System.out.println("from findAll "+cp.getCopyNumber());
-		}
+	for (Book book : books) {		
 		tblBooks.getItems().add(book);
 	}
 }
@@ -62,7 +59,6 @@ private void getSelecteditem(){
 	        if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
 	             rowData = row.getItem();
 	             showBookData(rowData);
-	            //System.out.println(rowData);
 	        }
 	    });
 	    return row ;

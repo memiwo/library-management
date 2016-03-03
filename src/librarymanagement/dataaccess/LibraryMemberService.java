@@ -1,8 +1,11 @@
 package librarymanagement.dataaccess;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
 import librarymanagement.business.Checkout;
 import librarymanagement.business.LibraryMember;
 
@@ -52,15 +55,18 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 		return persistanceManager.getEntityList();
 	}
 	
-	public void addCheckout(LibraryMember member, Checkout checkout){
-		//System.out.println("checkout  "+checkout.getBookCopy().getCopyNumber());
-		//libraryMembers.stream().forEach(m->System.out.println(m.getMemberNumber()));
-		/*LibraryMember mem = null;
-		for(LibraryMember m : libraryMembers){
-			if(m.getMemberNumber() == member.getMemberNumber()){
-				mem = m;
+	public boolean isMemberCheckedOutBook(LibraryMember member, Book book){
+		if(member != null && book != null){
+			for(Checkout ch : member.getCheckoutRecords()){
+				if(ch.getBookCopy().getBook().getISBN() == book.getISBN()){
+					return true;
+				}
 			}
-		}*/
+		}
+		return false;
+	}
+	
+	public void addCheckout(LibraryMember member, Checkout checkout){		
 		LibraryMember mem = libraryMembers.stream()
 				.filter(m -> m.getMemberNumber() == member.getMemberNumber())
 				.findFirst().get();
@@ -69,7 +75,6 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 			mem.getCheckoutRecords().add(checkout);
 		}
 		
-		//System.out.println("mem = "+mem.getMemberNumber());
 
 		for(LibraryMember m: libraryMembers){
 			if(m.getMemberNumber() == mem.getMemberNumber()){
@@ -78,6 +83,40 @@ public class LibraryMemberService implements Dao<LibraryMember>{
 		}
 		
 		save(libraryMembers);
+		
+	}
+	
+	public void checkinBook(LibraryMember member, BookCopy copy){
+		LibraryMember mem = libraryMembers.stream()
+				.filter(m -> m.getMemberNumber() == member.getMemberNumber())
+				.findFirst().get();
+		if(mem != null){
+			
+			List<Checkout> checkouts = mem.getCheckoutRecords();
+			
+			/**
+			 * It is strongly recommended to use Iterator when concurrently iterating and removing an item in a collection.
+			 * Using for loop results in ConcurrentModificationException
+			 */
+			Iterator<Checkout> checkoutIterator = checkouts.iterator();
+			
+			while(checkoutIterator.hasNext()){
+				Book book = checkoutIterator.next().getBookCopy().getBook();
+				if(book.getISBN() == copy.getBook().getISBN()){
+					checkoutIterator.remove();
+				}
+			}
+						
+			mem.setCheckoutRecords(checkouts);			
+			
+			for(LibraryMember m: libraryMembers){
+				if(m.getMemberNumber() == mem.getMemberNumber()){
+					libraryMembers.set(libraryMembers.indexOf(m), mem);
+				}
+			}
+			
+			save(libraryMembers);
+		}
 		
 	}
 	

@@ -79,7 +79,7 @@ public class SystemController {
 	
 	public void checkInBook(){
 		anchPane.getChildren().clear();
-		utility.displayScreenInDashBoard(anchPane, "CheckOutBook.fxml");
+		utility.displayScreenInDashBoard(anchPane, "CheckinBook.fxml");
 	}
 	
 	public void logout(){

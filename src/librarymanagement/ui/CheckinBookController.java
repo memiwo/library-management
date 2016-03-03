@@ -1,6 +1,7 @@
 package librarymanagement.ui;
 
 import java.io.IOException;
+import java.util.List;
 
 import application.Main;
 import javafx.fxml.FXML;
@@ -12,11 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import librarymanagement.business.Book;
+import librarymanagement.business.BookCopy;
+import librarymanagement.business.Checkout;
 import librarymanagement.business.LibraryMember;
 import librarymanagement.dataaccess.BookService;
 import librarymanagement.dataaccess.LibraryMemberService;
 
-public class SearchBookController {
+public class CheckinBookController {
 
 	@FXML
 	TextField tfISBN = new TextField();
@@ -44,7 +47,7 @@ public class SearchBookController {
 	
 	private BookService bookService = new BookService();
 	
-	public void search(){
+	public void checkIn(){
 		LibraryMember member = memberService.get(Integer.valueOf(tfMemberId.getText()));
 		
 		if(member == null){
@@ -52,25 +55,26 @@ public class SearchBookController {
 			message.setText("member is not found");
 			return;
 		}else{
-			Book book = bookService.isAvailableForCheckout(Integer.valueOf(tfISBN.getText()));
 			
-			if(book == null){
-				message.setText("Book is not available");
+			List<Checkout> checkedOuts = member.getCheckoutRecords();
+			BookCopy checkedOutCopy = null;
+			for(Checkout ch: checkedOuts){
+				if(ch.getBookCopy().getBook().getISBN() == Integer.valueOf(tfISBN.getText())){
+					checkedOutCopy = ch.getBookCopy();
+				}
+			}
+			if(checkedOutCopy == null){
+				message.setText("Member has not checked out this book");
 				return;
 			}
-			//Prevent a library member from checking out the same book he/she already checkedout
-			if(memberService.isMemberCheckedOutBook(member, book)){
-				message.setText("You have already checked out this book");
-				return;
-			}
-			if(book.getAvailableCopy() == null){
-				message.setText("All Book copies are checked out");
-				return;
-			}
-			SearchBookController.searchedBook = book;
-			SearchBookController.member = member;
+		
+			bookService.checkinCopy(checkedOutCopy);
 			
-			anchPane.getChildren().clear();
+			memberService.checkinBook(member, checkedOutCopy);
+			
+			message.setText("You have successfully checked in a book");
+						
+			/*anchPane.getChildren().clear();
 			try {
 				Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckOutBook.fxml"));
 				AnchorPane a = (AnchorPane)root;
@@ -78,24 +82,11 @@ public class SearchBookController {
 				anchPane.getChildren().add(a);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			}*/
 			//utility.completeCheckoutBook();
 			
 		}		
 	
 	}
 	
-	public void back(){
-		try{
-			//set the scene to the dashboard and display
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Dashboard.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
