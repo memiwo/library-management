@@ -36,7 +36,7 @@ BookService bookService = new BookService();
 			newBook.setTitle(title);
 			newBook.setISBN(isbn);
 			newBook.setAllowableDaysToBorrow(allowable);
-			//System.out.println("On Save");
+			
 			List<Book> books = bookService.findAll();
 			books.add(newBook);
 			bookService.save(books);

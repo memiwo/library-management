@@ -21,13 +21,9 @@ public class SearchBookController {
 	@FXML
 	TextField tfISBN = new TextField();
 	@FXML
-	Button btnSearch = new Button();
+	Button btnSearch = new Button();	
 	@FXML
-	Button btnBack = new Button();
-	
-	@FXML
-	TextField tfMemberId;
-	
+	TextField tfMemberId;	
 	@FXML
 	Label message;	
 	@FXML
@@ -71,31 +67,18 @@ public class SearchBookController {
 			SearchBookController.member = member;
 			
 			anchPane.getChildren().clear();
-			try {
+			/*try {
 				Parent root = FXMLLoader.load(getClass().getResource("/librarymanagement/ui/CheckOutBook.fxml"));
 				AnchorPane a = (AnchorPane)root;
 				a.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				anchPane.getChildren().add(a);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			}*/
+			utility.displayScreenInDashBoard(anchPane, "CheckOutBook.fxml");
 			//utility.completeCheckoutBook();
 			
 		}		
 	
-	}
-	
-	public void back(){
-		try{
-			//set the scene to the dashboard and display
-			Parent root  =  FXMLLoader.load(getClass().getResource("/librarymanagement/ui/Dashboard.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Main.mainStage.setScene(scene);
-			Main.mainStage.show();
-			Main.mainStage.setResizable(false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
