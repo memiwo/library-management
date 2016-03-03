@@ -83,6 +83,7 @@ public class SystemController {
 	}
 	
 	public void logout(){
+		Main.currentUser = null;
 		utility.openLogin();
 	}
 	
