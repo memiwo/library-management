@@ -34,7 +34,7 @@ public class SystemController {
 	@FXML
 	public void initialize(){
 		ToolTipDefaultsFixer.setTooltipTimers(0, 5000, 20);
-		welcomeLbl.setText("Welcome "+Main.currentUser.getFirstName()+" "+Main.currentUser.getLastName());
+		welcomeLbl.setText("Welcome "+Main.currentUser.getFirstName()+" "+ (Main.currentUser.getLastName() == null ? "": Main.currentUser.getLastName()));
 		
 		
 		//if administrator
