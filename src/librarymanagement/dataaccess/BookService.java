@@ -13,11 +13,14 @@ public class BookService implements Dao<Book> {
 
 	SerializationPersistanceManager<Book> persistanceManager = new SerializationPersistanceManager<Book>(BOOK_FILE);
 	
-	List<Book> books;
+	List<Book> books= new ArrayList<Book>();
 	
 	@Override
 	public void save(Book object) {
-		save(Arrays.asList(object));
+	
+		books.add(object);
+		
+		save(books);
 		
 	}	
 
@@ -31,7 +34,7 @@ public class BookService implements Dao<Book> {
 			}
 		}*/
 		persistanceManager.saveEntity(object);
-		
+		books = findAll();
 	}
 	
 	public Book isAvailableForCheckout(int isbn){
