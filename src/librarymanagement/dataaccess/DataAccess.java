@@ -97,7 +97,7 @@ public class DataAccess {
 		b1.getBookCopy().add(bc13);
 		Author a1 = new Author();
 		a1.setFirstName("authorfirstname1");
-		a1.setLastName("authorfirstname1");
+		a1.setLastName("authorlastname1");
 		b1.getAuthors().add(a1);
 		Checkout c1 = new Checkout(bc11);
 		lib1.getCheckoutRecords().add(c1);
@@ -125,7 +125,7 @@ public class DataAccess {
 		b2.getBookCopy().add(bc23);	
 		Author a2 = new Author();
 		a2.setFirstName("authorfirstname2");
-		a2.setLastName("authorfirstname2");
+		a2.setLastName("authorlastname2");
 		b2.getAuthors().add(a2);
 		Checkout c2 = new Checkout(bc21);
 		lib2.getCheckoutRecords().add(c2);
@@ -141,7 +141,7 @@ public class DataAccess {
 		b3.getBookCopy().add(bc3);
 		Author a3 = new Author();
 		a3.setFirstName("authorfirstname3");
-		a3.setLastName("authorfirstname3");
+		a3.setLastName("authorlastname3");
 		b3.getAuthors().add(a3);
 		Checkout c3 = new Checkout(bc3);
 		lib3.getCheckoutRecords().add(c3);
@@ -157,8 +157,12 @@ public class DataAccess {
 		b4.getBookCopy().add(bc4);
 		Author a4 = new Author();
 		a4.setFirstName("authorfirstname4");
-		a4.setLastName("authorfirstname4");
+		a4.setLastName("authorlastname4");
+		Author a5 = new Author();
+		a5.setFirstName("authorfirstname5");
+		a5.setLastName("authorlastname5");
 		b4.getAuthors().add(a4);
+		b4.getAuthors().add(a5);
 		Checkout c4 = new Checkout(bc4);
 		lib4.getCheckoutRecords().add(c4);
 		

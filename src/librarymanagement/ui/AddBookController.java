@@ -1,5 +1,7 @@
 package librarymanagement.ui;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,8 +37,9 @@ BookService bookService = new BookService();
 		int allowable = Integer.parseInt(tfAllowableDaysToBorrow.getText());
 		Book newBook = new Book(title,isbn,allowable);
 		//System.out.println("On Save");
-		bookService.save(newBook);
-		
+		List<Book> books = bookService.findAll();
+		books.add(newBook);
+		bookService.save(books);
 		close();
 		}catch(Exception ex)
 		{
