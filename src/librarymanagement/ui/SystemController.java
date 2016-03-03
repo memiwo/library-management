@@ -4,6 +4,7 @@ import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import librarymanagement.business.Authorization;
@@ -32,6 +33,7 @@ public class SystemController {
 	
 	@FXML
 	public void initialize(){
+		ToolTipDefaultsFixer.setTooltipTimers(0, 5000, 20);
 		welcomeLbl.setText("Welcome "+Main.currentUser.getFirstName()+" "+Main.currentUser.getLastName());
 		
 		
@@ -47,7 +49,12 @@ public class SystemController {
 			flowPane.getChildren().remove(editMember);
 			flowPane.getChildren().remove(addBook);
 		}
-		
+		addNewMember.setTooltip(new Tooltip("Add Member"));
+		editMember.setTooltip(new Tooltip("Edit Member"));
+		addBook.setTooltip(new Tooltip("Add Book"));
+		checkInBook.setTooltip(new Tooltip("Check In"));
+		checkOutBook.setTooltip(new Tooltip("Check out"));
+		logout.setTooltip(new Tooltip("Logout"));
 		//if both
 		//by default all the functionalities are available
 	}
