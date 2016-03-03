@@ -19,7 +19,7 @@ import librarymanagement.dataaccess.UserService;
 
 public class TestPersistance {
 	public static void main(String[] args){
-	/*UserService userService = new UserService();
+	UserService userService = new UserService();
 		
 		User user = new User();
 		user.setFirstName("Issa");
@@ -75,7 +75,7 @@ public class TestPersistance {
 		List<String> asList = Arrays.asList("hello", "my", "dear", "world");
 		asList = asList.stream().filter(s -> !s.contains("ll")).collect(Collectors.toList());
 		asList.stream().forEach(System.out::println);
-		*/
+		
 		Book book = new Book();
 		book.setTitle("Design pattern");
 		book.setISBN(123456789);
@@ -83,20 +83,20 @@ public class TestPersistance {
 		
 		
 		
-		Book b1 = new Book();
-		b1.setTitle("Domain Driven Design 2");
-		b1.setISBN(334455);
-		Book b2 = new Book();
-		b2.setISBN(2222);
-		b2.setTitle("Core Java 2");
-		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE, b1), new BookCopy(2,Boolean.FALSE, b1), new BookCopy(3, Boolean.TRUE, b1));
+		Book b11 = new Book();
+		b11.setTitle("Domain Driven Design 2");
+		b11.setISBN(334455);
+		Book b21 = new Book();
+		b21.setISBN(2222);
+		b21.setTitle("Core Java 2");
+		List<BookCopy> copies = Arrays.asList(new BookCopy(1, Boolean.TRUE, b11), new BookCopy(2,Boolean.FALSE, b11), new BookCopy(3, Boolean.TRUE, b11));
 
-		b1.setBookCopy(copies);
+		b11.setBookCopy(copies);
 		
-		BookService bookService = new BookService();
-		bookService.save(Arrays.asList(b1,b2));
+		BookService bookService1 = new BookService();
+		bookService1.save(Arrays.asList(b11,b21));
 		
-		for(Book b: bookService.findAll()){
+		for(Book b: bookService1.findAll()){
 			for(BookCopy bc : b.getBookCopy()){
 				System.out.println("bc book "+bc.getBook().getTitle() +" copy number "+bc.getCopyNumber());
 				for(BookCopy bcc: bc.getBook().getBookCopy()){
@@ -106,10 +106,10 @@ public class TestPersistance {
 			System.out.println(b.getTitle());
 		}
 		
-		LibraryMember member = new LibraryMember();
-		member.setMemberNumber(1234);
-		LibraryMemberService libraryMemberService = new LibraryMemberService();
-		libraryMemberService.save(member);
+		LibraryMember member1 = new LibraryMember();
+		member1.setMemberNumber(1234);
+		LibraryMemberService libraryMemberService1 = new LibraryMemberService();
+		libraryMemberService1.save(member1);
 		
 	}
 
