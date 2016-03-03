@@ -95,10 +95,10 @@
                               <Label layoutX="13.0" layoutY="96.0" text="Number of Copies" />
                               <Button layoutX="152.0" layoutY="155.0" mnemonicParsing="false" onAction="#openAddBookAuthor" text="Add Author" />
                               <Button layoutX="243.0" layoutY="155.0" mnemonicParsing="false" onAction="#openAddBookCopy" text="Add a copy" />
-                              <Label fx:id="lbltitle" layoutX="54.0" layoutY="14.0" styleClass="labeldata" stylesheets="@application.css" text="Label" />
-                              <Label fx:id="lblISBN" layoutX="54.0" layoutY="42.0" styleClass="labeldata" text="Label" />
-                              <Label fx:id="lblNumberOfCopy" layoutX="126.0" layoutY="96.0" styleClass="labeldata" text="Label" />
-                              <Label fx:id="lblAllowableDaysToBorrow" layoutX="152.0" layoutY="71.0" styleClass="labeldata" text="Label" />
+                              <Label fx:id="lbltitle" layoutX="54.0" layoutY="14.0" styleClass="labeldata" stylesheets="@application.css" />
+                              <Label fx:id="lblISBN" layoutX="54.0" layoutY="42.0" styleClass="labeldata" />
+                              <Label fx:id="lblNumberOfCopy" layoutX="126.0" layoutY="96.0" styleClass="labeldata" />
+                              <Label fx:id="lblAllowableDaysToBorrow" layoutX="152.0" layoutY="71.0" styleClass="labeldata" />
                            </children>
                         </AnchorPane>
                      </content>
