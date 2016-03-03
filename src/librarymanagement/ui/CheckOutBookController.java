@@ -1,5 +1,8 @@
 package librarymanagement.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,10 +31,13 @@ public class CheckOutBookController {
 	@FXML
 	TableView<CheckoutDto> tblCheckout;
 	
+	private List<CheckoutDto> checkoutDtos = new ArrayList<>();
+	private LibraryMember member;
+	
 	@FXML
 	public void initialize(){
 		Book book = SearchBookController.searchedBook;	
-		LibraryMember member = SearchBookController.member;
+		member = SearchBookController.member;
 		
 		BookCopy copy = book.getAvailableCopy();
 		
@@ -47,14 +53,23 @@ public class CheckOutBookController {
 		tblCheckout.getItems().clear();
 		int seq = 0;
 		for (Checkout ch : member.getCheckoutRecords()) {
-			tblCheckout.getItems().add(new CheckoutDto(++seq,ch.getBookCopy()));
+			checkoutDtos.add(new CheckoutDto(++seq,ch.getBookCopy()));
+			//tblCheckout.getItems().add(new CheckoutDto(++seq,ch.getBookCopy()));
 		}
+		tblCheckout.getItems().addAll(checkoutDtos);
 		
 		//updates book info
-		bookService.checkoutCopy(copy);
+		bookService.checkoutCopy(copy);		
 		
+	}
+	
+	public void printCheckoutRecord(){
 		
-		
+		System.out.println("Member Number : "+ member.getMemberNumber()+ " "+member.getFirstName()+" "+member.getLastName());
+		System.out.println("Checked Out Records : Total("+checkoutDtos.size()+")");
+		for(CheckoutDto cd :checkoutDtos){
+			System.out.println(cd.getSequence()+". "+ cd.getBookTitle()+ " "+cd.getCopyNumber()+" "+cd.getCheckoutDate()+" "+cd.getDueDate());
+		}
 		
 	}
 	
