@@ -29,22 +29,18 @@ BookService bookService = new BookService();
 	
 	@FXML
 	public void addBook(){
-		try{
-		
-		
-		String title = tfTitle.getText();
-		int isbn = Integer.parseInt(tfISBN.getText());
-		int allowable = Integer.parseInt(tfAllowableDaysToBorrow.getText());
-		Book newBook = new Book(title,isbn,allowable);
-		//System.out.println("On Save");
-		List<Book> books = bookService.findAll();
-		books.add(newBook);
-		bookService.save(books);
-		close();
-		}catch(Exception ex)
-		{
-			lblError.setText(ex.getMessage());
-		}
+			String title = tfTitle.getText();
+			int isbn = Integer.parseInt(tfISBN.getText());
+			int allowable = Integer.parseInt(tfAllowableDaysToBorrow.getText());
+			Book newBook = new Book();
+			newBook.setTitle(title);
+			newBook.setISBN(isbn);
+			newBook.setAllowableDaysToBorrow(allowable);
+			//System.out.println("On Save");
+			List<Book> books = bookService.findAll();
+			books.add(newBook);
+			bookService.save(books);
+			close();
 		
 	}
 	@FXML
